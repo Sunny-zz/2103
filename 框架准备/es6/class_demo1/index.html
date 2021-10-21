@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/mySwiper.css">
+  <style>
+    .b{
+      width: 800px;
+      height: 400px;
+    }
+    .box{
+      width: 300px;
+      height: 300px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h2> class(构造函数原型) 的应用</h2>
+  <div class="swiper-container a">
+    <div class="swiper-wrap">
+      <div class="slide">1</div>
+      <div class="slide">2</div>
+      <div class="slide">3</div>
+      <div class="slide">4</div>
+    </div>
+    <!-- 分页器和图片的个数时相同的 -->
+    <!-- 可以给我们的插件添加一个功能 -->
+    <!-- 自动创建分页器 -->
+    <!-- <div class="swiper-pagination">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="prev">＜</div>
+    <div class="next">＞</div> -->
+  </div>
+
+  <div class="swiper-container b">
+    <div class="swiper-wrap">
+      <div class="slide">1</div>
+      <div class="slide">2</div>
+      <div class="slide">3</div>
+      <div class="slide">4</div>
+      <div class="slide">5</div>
+      <div class="slide">6</div>
+    </div>
+    <!-- 分页器和图片的个数时相同的 -->
+    <!-- 可以给我们的插件添加一个功能 -->
+    <!-- 自动创建分页器 -->
+    <div class="swiper-pagination">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="prev">＜</div>
+    <div class="next">＞</div>
+  </div>
+  <!-- <div class="box">123</div>
+  <div class="box">123</div>
+  <div class="banner"></div> -->
+  <script src="./js/mySwiper.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // 用户使用插件
+    const swiperDemo = new mySwiper('.a', {
+      autoPlay: true,
+      isHasArrow: false,
+      isHasPagination: false
+    })
+
+    // swiperDemo.init()
+
+    const swiperDemo1 = new mySwiper('.b', {
+      // autoPlay: false
+    })
+
+    // const boxCopy = document.querySelector('.box').cloneNode(true)
+    // console.log(boxCopy)
+    // document.querySelector('.banner').append(boxCopy)
+
+    // const cBox = $('.box:first').clone()
+    // $('.banner').append(cBox)
+    // console.log(cBox)
+  </script>
+</body>
+
+</html>

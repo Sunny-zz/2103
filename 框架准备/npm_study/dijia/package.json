@@ -1,0 +1,21 @@
+{
+  "name": "dijia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./js/xxx.js",
+    "x": "npm -v && node -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "lodash": "^4.17.21",
+    "swiper": "^4.5.1"
+  }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Promise</h2>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <script>
+    // Promise 是异步解决方案
+    // 之前解决但部分是回调函数，当异步嵌套过多，就会产生回调地狱(很难维护,不直观)，es6 的 Promise 就是解决该问题的
+
+
+    // 创建一个 promise 实例
+    // 需要传递函数作为参数  这个参数默认就会触发
+    // 该函数需要提供两个参数
+    // 第一个参数 resolve 是一个函数，代表是异步成功之后要执行的函数
+    // 第二个参数 reject  是一个函数，代表是异步失败之后要执行的函数
+    // 函数内部写异步操作
+    // 在异步操作结束的时候 可以选择执行 resolve 或者 reject 
+    // const myPromise = new Promise((resolve, reject) => {
+    //   console.log('promise')
+    //   setTimeout(() => {
+    //     const a = 10
+    //     // console.log('异步结束，成功了')
+    //     if (a > 90) {
+    //       resolve(a)
+    //     } else {
+    //       reject('失败了，产品不合格')
+    //     }
+    //   }, 1000)
+    // })
+    // promise 实例下 有两个方法
+    // 第一  then 方法, 作用是给 promise 提供 resolve 函数
+    // 第二  catch 方法,作用是给 promise 提供 reject 函数
+    // promise 实例下的 两个方法都会返回新的 promise 实例
+    // console.log(myPromise)
+    // const promise1 = myPromise.then((res)=> {
+    //   console.log(res)
+    // })
+    // console.log(promise1)
+
+
+    // myPromise.then((res) => {
+    //   console.log(res)
+    // }).catch((err) => {
+    //   conaole.log(err)
+    // })
+    // myPromise.then(()=>{
+    //   // resolve
+    // }, ()=> {
+    //   // reject
+    // })
+
+    // promise 的状态
+    // pending（进行中）、fulfilled（已成功）和rejected（已失败）
+
+    // const ajaxPromise = ({ url, method, data, headers }) => new Promise((resolve, reject) => {
+    //   const xhr = new XMLHttpRequest()
+    //   xhr.open(method ?? 'GET', url, true)
+    //   // 默认传递了 headers 就是设置了 content-type
+    //   headers ? xhr.setRequestHeader('Content-type', headers['content-type']) : ''
+    //   data ? xhr.send(JSON.stringify(data)) : xhr.send()
+    //   xhr.onreadystatechange = (a) => {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //       resolve(JSON.parse(xhr.responseText))
+    //     }
+    //   }
+    // })
+
+    //  options  内需要有   url 请求地址    method 请求方法   data 请求传递的参数   headers 请求头设置 是一个对象
+    // const a = ajaxPromise({ url: 'https://cnodejs.org/api/v1/accesstoken', method: 'POST', data: { accesstoken: '7c14e817-2163-42c1-bb48-a4d09d76eece' }, headers: { 'content-type': 'application/json' } }).then( res => {
+    //   console.log(res)
+    //   console.log('登录成功了')
+    //   // then 方法传递的参数 resolve 函数的返回值可以写成一个新的 promise ，那么这个 then 方法的返回值就和 resolve 函数的返回值有关联了
+    //   return ajaxPromise({url: 'https://cnodejs.org/api/v1/topics?tab=ask&page=1&limit=20'})
+    // }).then(res => {
+    //   console.log(res)
+    // })
+
+    // 除了 then 和 catch 之外 还有一个 finally 方法 意思是异步完成后触发(不管失败还是成功)
+
+    // axios.get()  返回就是一个  promise 实例
+    // axios.post('https://cnodejs.org/api/v1/accesstoken', { accesstoken: '7c14e817-2163-42c1-bb48-a4d09d76eece' }).then(res => {
+    //   console.log(res.data)
+    //   return axios.get('https://cnodejs.org/api/v1/topics?tab=ask&page=1&limit=20')
+    // }).catch(err => {
+    //   console.log(err)
+    // }).then(res => {
+    //   console.log(res.data)
+    // })
+
+    // Promise.all() 这个方法的作用是，传递多个 promise 实例，监听所有实例状态是否都完成  
+    // 当所有实例状态变成 fulfilled, 或者其中一个变为 rejected， 就会执行 all 方法的 then 或者 catch
+    // 当传递的实例设置了 catch ，并且这个实例的状态是 rejected， 那么 all 的 catch 就不会触发了，触发的是实例的 catch
+    // 多个异步 并行执行，全部完成后在处理  就可以使用  Promise.all 
+    // Promise.race()  该方法和 all 用法一样
+    // race  会根据最先完成的 promise 实例，来决定最终 race 的状态
+    // Promise.all([ajaxPromise({url: 'https://cnodejs.org/api/v1/topics?tab=ask&page=1&limit=20'}),ajaxPromise({url: 'https://cnodejs.org/api/v1/topics?tab=ask&page=1&limit=20'})]).then(res => {
+    //   console.log(res[0])
+    //   console.log(res[1])
+    // })
+
+    // Promise.allSettled  作为 all 方法的补充，因为 all 使用的时候一旦某个实例变成 rejected 状态，整个的 all 就报错了，无法继续
+
+    // 用法和 Promise.all()  一样  不管内部的实例，最终的状态是什么，最后 allSettled 只有一个状态(fulfilled), 返回的参数是数组 包含所有实例的结果
+
+    // Promise.any()  同样也是传递数组，数组内也是放 promise 实例，any 的作用是看所有实例中是否存在状态为 fulfilled 的，有的话，就执行 then， 没有就执行 catch
+
+    // Promise.resolve()    创建一个  promise 实例
+
+    // const p = Promise.resolve('foo')
+    // 等价于
+    // new Promise(resolve => resolve('foo'))
+    // p.then(res => {
+    //   console.log(res)
+    // })
+    //  Promise.resolve()  的传参
+    // 1. 传递 promise 实例， 直接返回传递的实例， 不会做任何修改
+    // 2. 传递一个不带 then 的对象或者非对象   相当于   new Promise(resolve => resolve(传递的值))
+    // 3. 不传参数
+
+    // setTimeout(function () {
+    //   console.log('three');
+    // }, 0);
+
+    // Promise.resolve().then(function () {
+    //   console.log('two');
+    // });
+
+    // console.log('one');
+  </script>
+</body>
+
+</html>

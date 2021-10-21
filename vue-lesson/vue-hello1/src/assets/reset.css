@@ -1,0 +1,17 @@
+*{
+  /* margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
+}
+body{
+  height: 5000px;
+}
+a{
+   text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+/* 剩下的那些初始化不需要写 */
+/* 组件中用到的话 在组件内对具体的标签初始化 */

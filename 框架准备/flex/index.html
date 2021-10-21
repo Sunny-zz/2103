@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    .box{
+      /* 弹性盒子    容器*/
+      height: 300px;
+      border: 1px solid red;
+      display: flex;
+      /* flex-direction: row; */
+      /* flex-wrap: wrap; */
+      /* flex-flow: wrap-reverse row; */
+      /* justify-content: space-around; */
+      /* align-content: center; */
+    }
+    .box span {
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+      /* margin-bottom: 10px; */
+    }
+    .box .four{
+      width: 400px;
+      
+    }
+    .box1{
+      width: 200px;
+      display: flex;
+      /* flex-direction: column; */
+      align-items: center;
+      height: 200px;
+      background-color: #00b3d4;
+      justify-content: center;
+    }
+    .box1 span{
+      background-color: red;
+      width: 100px;
+    }
+    .box span:nth-child(2) {
+      order: 5;
+      /* flex-grow: 1; */
+      background-color: rgb(131, 39, 192);
+      flex-shrink: 0;
+      align-self: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span class="four">4</span>
+    <!-- <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span> -->
+
+  </div>
+
+  <div class="box1">
+    <span>flex</span>
+  </div>
+  <script>
+    // flex 布局    弹性盒子布局
+    // 使用了 flex  就不能使用 float  clear 和 vertical-align
+    // 容器    项目    轴线(主轴 交叉轴|副轴)
+
+    // 容器  display: flex; 就会将标签变成容器    默认宽度 100%
+    // 1. 容器的子级称为项目, 可以直接设置大小
+    // 2. 容器自带水平和垂直两个方向的轴线， 默认横轴是主轴从左到右，纵轴是交叉轴从上到下， 项目默认按照主轴线的方向排列
+    // 3. 默认项目在主轴方向上不能换行 (默认只有一行)，容器内的项目是不能超出容器的，一旦大小超出了，项目会自动缩小直到不超出容器。
+    // 容器可以设置的样式
+    // 1. flex-direction   可以控制主轴线的方向 
+    // 2. flex-wrap  控制项目是否可以换行
+    // 3. flex-flow   1 2 的简写
+    // 4. justify-content  规定容器内的项目在主轴方向上的排列方式
+    // flex-start（默认值）：左对齐
+    // flex-end：右对齐
+    // center： 居中
+    // space-between：两端对齐，项目之间的间隔都相等。
+    // space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+
+    // 5. align-items  规定项目在交叉轴的排列方式
+    // stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+    // flex-start：交叉轴的起点对齐。
+    // flex-end：交叉轴的终点对齐。
+    // center：交叉轴的中点对齐。
+    // baseline: 项目的第一行文字的基线对齐。
+
+
+    // 6. align-content  多轴线的对齐方式，当容器允许换行的时候才会出现多轴线
+
+    // 项目
+    // 项目在容器的交叉轴方向没有设置大小或者设置的大小是 auto，并没有使用 align-items 控制项目在交叉轴方向上的排列。那么项目的交叉轴方向上的大小和容器一样大
+    // 项目如果设置了大小，在不超出容器的情况下，就是设置的大小
+    // 项目没有设置大小，但是容器使用了 align-items 控制了项目， 那么项目就是内容的大小
+
+    // 项目可以设置的样式
+    // order  规定项目的排列顺序  order的值是数字 默认是 0   数字小排前面
+    // flex-grow  规定项目的放大比例 默认是 0  可以换成 1    1的意思是占满剩余空间   都设置成1 就等比放大
+    // flex-shrink 规定项目的缩小比例 默认是 1 可以换成 0    0 的意思是不允许缩小 1 的意思是默认可以缩小(容器地方不够了项目会自动缩小)
+    // flex-basis   设置项目大小
+    // flex  简写
+    // align-self  规定项目在交叉轴的排列方式， 可以使用这个属性单独控制一个项目在交叉轴的排列
+
+  </script>
+</body>
+</html>

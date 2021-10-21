@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn{
+      display: inline-block;
+      padding: 14px 33px;
+      font-weight: 400;
+      color: #fff;
+      text-decoration: none;
+      background-color: #9C3;
+      margin-left: 400px;
+      margin-top: 100px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn::after{
+      content: '';
+      width: 3px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #7aa427;
+      transition: all .2s linear;
+      z-index: -1;
+    }
+    .btn:hover::after{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <a href="#" class="btn">LEARN MORE</a>
+</body>
+</html>

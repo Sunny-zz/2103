@@ -1,0 +1,63 @@
+/* 插件的 css 样式 */
+/* 一定要避免和用户的样式冲突 */
+/* 写所有样式的时候用最外层的 class 名 做前缀 */
+.swiper-container {
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.swiper-container .swiper-wrap{
+  height: 100%;
+  /* width: 400%; */
+  transition: all .5s linear;
+}
+
+.swiper-container .swiper-wrap .slide{
+  float: left;
+  height: 100%;
+  background-color: #ccc;
+} 
+
+.swiper-container .swiper-pagination {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  /* 无宽度水平居中 */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+}
+.swiper-container .swiper-pagination span{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255, 0.5);
+}
+
+.swiper-container .swiper-pagination span.active{
+  background-color: #00b3d4;
+}
+.swiper-container .prev, .swiper-container .next{
+  width: 50px;
+  height: 60px;
+  background-color: transparent;
+  font-size: 30px;
+  text-align: center;
+  line-height: 60px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -30px;
+  cursor: pointer;
+}
+.swiper-container .prev {
+  left: 0;
+}
+.swiper-container .next {
+  right: 0;
+}
+
