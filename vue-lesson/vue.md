@@ -218,6 +218,27 @@ prop 是单项的， 只能父传子，而且子不能修改 prop。
 
 ## 自定义事件
 
+.native  给子组件的根元素绑定原生事件
+$listeners  替代自定义事件的接收
+.sync 
+
+## 生命周期 
+vue 实例(vue 组件)在初始化的过程中都会执行一些默认的函数, 还有在更新 data 以及组件销毁的时候都会自动执行一些函数。我们称这些函数叫生命周期钩子。所有钩子函数都是同步函数。
+
+初始化
+- beforeCreate
+- created  发送 ajax 请求更新 data  (其实也可以在 mounted 中发)
+- beforeMount
+- mounted 
+
+更新  data 发生改变，并且这个改变会引起视图的变化(dom 要改变)
+- beforeUpdate 
+- updated
+
+销毁
+- beforeDestroy
+- destroyed
+
 ## 指令
 v- 为前缀的 叫指令，指令值可以写成 js 表达式，当值改变的时候，会响应式的影响对应 dom。
 

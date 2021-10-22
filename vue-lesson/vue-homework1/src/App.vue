@@ -48,7 +48,7 @@ anyone without registration."
     <hr>
     <EmitDemo />
     <hr>
-    <LifeCircle />
+    <LifeCycle />
   </div>
 </template>
 
@@ -60,7 +60,7 @@ import WatchDemo from "./components/WatchDemo.vue";
 import ComputedDemo from "./components/ComputedDemo.vue";
 // import PropDemo from "./components/PropDemo.vue";
 import EmitDemo from "./components/EmitDemo.vue";
-import LifeCircle from "./components/LifeCircle.vue";
+import LifeCycle from "./components/LifeCycle.vue";
 // import img1 from './assets/images/page2-img1.png'
 // import img2 from './assets/images/page2-img2.png'
 // import img3 from './assets/images/page2-img3.png'
@@ -74,7 +74,7 @@ export default {
     ComputedDemo,
     // PropDemo,
     EmitDemo,
-    LifeCircle
+    LifeCycle
   },
   data() {
     return {
