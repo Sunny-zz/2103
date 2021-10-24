@@ -1,19 +1,21 @@
 <template>
   <div class="todo-footer">
-    <span class="left">1 item left</span>
+    <span class="left"
+      >{{ activeNum }} item{{ activeNum === 1 ? "" : "s" }} left</span
+    >
     <div class="btns">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button @click="$emit('update:filterType', 'all')">All</button>
+      <button @click="$emit('update:filterType', 'active')">Active</button>
+      <button @click="$emit('update:filterType', 'completed')">Completed</button>
     </div>
-    <button class="right">Clear completed</button>
+    <button @click="$emit('delComletedTodo')" v-show="doneNum" class="right">Clear completed</button>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  props: ["activeNum","doneNum"],
+};
 </script>
 
 <style>
@@ -30,5 +32,4 @@ export default {
   left: 46%;
   transform: translate(-50%, -50%);
 }
-
 </style>

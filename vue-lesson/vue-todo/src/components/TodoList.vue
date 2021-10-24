@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <ul class="list">
-      <TodoItem  v-for="todo in lists" :key="todo.id" v-bind='todo' />
+      <TodoItem v-bind='$listeners' v-for="todo in lists" :key="todo.id" v-bind:todo='todo' />
     </ul>
   </div>
 </template>
@@ -12,6 +12,9 @@ export default {
   props: ['lists'],
   components: {
     TodoItem,
+  },
+  created () {
+    // console.log(this.$listeners)
   },
 }
 </script>

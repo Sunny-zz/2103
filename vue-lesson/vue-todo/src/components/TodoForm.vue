@@ -1,6 +1,10 @@
 <template>
   <div class="todo-form">
-    <span class="iconfont icon-xiangxia2"></span>
+    <!-- <span  v-show="allNum" :class="['iconfont', 'icon-xiangxia2', {allCompleted: !activeNum } ]"></span> -->
+    <label for="all">
+      <input @change="changeAll" :checked='!activeNum' type="checkbox" name="" id="all">
+      <span v-show="allNum" class="iconfont icon-xiangxia2 allCompleted"></span>
+    </label>
     <input class="todo-text" type="text" @keydown.enter="add" v-model="todoText" >
     <button @click="add" class="add">添加</button>
   </div>
@@ -8,6 +12,7 @@
 
 <script>
 export default {
+  props: ['allNum', 'activeNum'],
   data() {
     return {
       todoText: ''
@@ -20,6 +25,10 @@ export default {
         this.$emit('add-todo', todoText)
         this.todoText = ''
       }
+    },
+    changeAll(e){
+      // console.log(e.target.checked)
+      this.$emit('changeAllStatus', e.target.checked)
     }
   },
 }
@@ -30,6 +39,9 @@ export default {
   display: flex;
   align-items: center;
   padding: 10px 0;
+}
+.todo-form #all{
+  display: none;
 }
 .todo-form .todo-text{
   margin-left: 10px;
@@ -42,8 +54,10 @@ export default {
 .todo-form span {
   font-size: 20px;
   color: #ccc;
+  font-weight: bolder;
 }
-.todo-form .all{
+
+.todo-form #all:checked + .allCompleted{
   color: #000;
 }
 </style>
