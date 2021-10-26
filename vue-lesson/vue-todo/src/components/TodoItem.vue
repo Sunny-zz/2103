@@ -22,7 +22,6 @@ export default {
   // 所以我们直接使用了 v-model 修改了 todo.done 
   // 如果不直接修改 就想让 祖先组件定义修改方法，然后替他去执行。
   // 那么就不需要使用 v-model 换成 checked 和 change
-
   data() {
     return {
       isEditing: false

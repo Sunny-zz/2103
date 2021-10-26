@@ -4,9 +4,9 @@
       >{{ activeNum }} item{{ activeNum === 1 ? "" : "s" }} left</span
     >
     <div class="btns">
-      <button @click="$emit('update:filterType', 'all')">All</button>
-      <button @click="$emit('update:filterType', 'active')">Active</button>
-      <button @click="$emit('update:filterType', 'completed')">Completed</button>
+      <button :style="{color: filterType==='all' ? 'red' : 'black'}" @click="$emit('update:filterType', 'all')">All</button>
+      <button :style="{color: filterType==='active' ? 'red' : 'black'}" @click="$emit('update:filterType', 'active')">Active</button>
+      <button :style="{color: filterType==='completed' ? 'red' : 'black'}" @click="$emit('update:filterType', 'completed')">Completed</button>
     </div>
     <button @click="$emit('delComletedTodo')" v-show="doneNum" class="right">Clear completed</button>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ["activeNum","doneNum"],
+  props: ["activeNum","doneNum","filterType"],
 };
 </script>
 
