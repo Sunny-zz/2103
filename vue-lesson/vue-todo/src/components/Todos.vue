@@ -1,40 +1,37 @@
 <template>
   <div class="todos">
-    <TodoForm @changeAllStatus='changeAllStatus' @add-todo='addTodo' v-bind='todoStatus' />
-    <TodoList :lists='showLists' @delTodo='delTodo' @changeDone="changeDone" @editTodo='editTodo' />
-    <TodoFooter v-bind='todoStatus' @delComletedTodo='delComletedTodo' :filterType.sync='filterType'  />
+    <TodoForm
+      @changeAllStatus="changeAllStatus"
+      @add-todo="addTodo"
+      v-bind="todoStatus"
+    />
+    <TodoList
+      :lists="showLists"
+      @delTodo="delTodo"
+      @changeDone="changeDone"
+      @editTodo="editTodo"
+    />
+    <TodoFooter
+      v-bind="todoStatus"
+      @delComletedTodo="delComletedTodo"
+      :filterType.sync="filterType"
+    />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import TodoForm from './TodoForm.vue'
 import TodoList from './TodoList.vue'
 import TodoFooter from './TodoFooter.vue'
 export default {
   data() {
     return {
-      lists: [
-        {
-          id: '12d3s',
-          todoText: '学习 vue',
-          done: true
-        },
-        {
-          id: '78d3s',
-          todoText: '学习 react',
-          done: false
-        },
-        {
-          id: '5t6y7u',
-          todoText: '学习 小程序',
-          done: false
-        }
-      ],
-      filterType: 'active'
+      lists: [],
+      filterType: 'all'
     }
   },
   computed: {
-
     // activeNum() {
     //   return  this.lists.filter(ele => !ele.done).length
     // },
@@ -68,15 +65,22 @@ export default {
     TodoList,
     TodoFooter
   },
+  created () {
+    axios.get('http://localhost:3008/todos').then(res =>{
+      // console.log(res.data)
+      this.lists = res.data 
+    })
+  },
   methods: {
-    addTodo(todoText) {
+    addTodo(todoText, id) {
       // 根据输入的内容修改数组
       // 给数组添加新的一项
       // 选择 push 
       // 创建一个 新的 对象
       // 格林威治时间   new Date().getTime() ---> 75173172543123
       this.lists.push({
-        id: new Date().getTime().toString(),
+        // id: new Date().getTime().toString(),
+        id,
         todoText,
         done: false
       })
@@ -100,7 +104,17 @@ export default {
       this.getTodoById(id).done = !this.getTodoById(id).done
     },
     delComletedTodo(){
-      this.lists = this.lists.filter(ele => !ele.done)
+      const checkedTodoIds = this.lists.reduce((res, ele) => {
+        if(ele.done) res.push(ele.id)
+        return res
+      }, [])
+      // console.log(checkedTodoIds)
+      // axios.all([请求1, 请求2,....])
+      // 我们自己的 json-server 一次发多个请求可能会蹦
+      // ['id1', 'id2'] ==map》  [请求1,请求2]
+      axios.all(checkedTodoIds.map(id => axios.delete(`http://localhost:3008/todos/${id}`))).then(() => {
+        this.lists = this.lists.filter(ele => !ele.done)
+      }) 
     },
     changeAllStatus(status){
       this.lists.forEach(ele => ele.done = status)
@@ -115,10 +129,10 @@ export default {
 </script>
 
 <style>
-  .todos{
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    margin: 0 auto;
-  }
+.todos {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+}
 </style>

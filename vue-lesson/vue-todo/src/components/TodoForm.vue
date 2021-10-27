@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: ['allNum', 'activeNum'],
   data() {
@@ -22,8 +23,13 @@ export default {
     add() {
       const {todoText} = this
       if(todoText.trim()){
-        this.$emit('add-todo', todoText)
-        this.todoText = ''
+        // 1. 更新后端数据库
+        axios.post('http://localhost:3008/todos', {todoText, done: false }).then(res => {
+          // 2. 1 成功之后在更新本地，更新本地的时候一般要根据后端请求的返回值去更新
+          // console.log(res.data.id)
+          this.$emit('add-todo', todoText , res.data.id)
+          this.todoText = ''
+        })
       }
     },
     changeAll(e){

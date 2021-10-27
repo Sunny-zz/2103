@@ -80,7 +80,6 @@ export default {
       }else{
         this.changeNumber(this.id, Number(value));
       }
-      
     },
   },
 };

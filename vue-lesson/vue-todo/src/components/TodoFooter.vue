@@ -8,13 +8,18 @@
       <button :style="{color: filterType==='active' ? 'red' : 'black'}" @click="$emit('update:filterType', 'active')">Active</button>
       <button :style="{color: filterType==='completed' ? 'red' : 'black'}" @click="$emit('update:filterType', 'completed')">Completed</button>
     </div>
-    <button @click="$emit('delComletedTodo')" v-show="doneNum" class="right">Clear completed</button>
+    <button @click="handleDel" v-show="doneNum" class="right">Clear completed</button>
   </div>
 </template>
 
 <script>
 export default {
   props: ["activeNum","doneNum","filterType"],
+  methods: {
+    handleDel() {
+      this.$emit('delComletedTodo')
+    }
+  }
 };
 </script>
 

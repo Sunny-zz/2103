@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* .username {
+      display: none;
+    } */
+  </style>
+</head>
+<body>
+  <button class="btn">出现</button>
+  <form action="">
+
+    <!-- <input class="username" autofocus type="text"> -->
+  </form>
+  <script>
+    // input 自动获得焦点
+    // 1. 添加 autofocus 属性
+    // 2. 原生 dom.focus()
+    document.querySelector('.btn').onclick = function(){
+      // document.querySelector('.username').style.display = 'block'
+      document.querySelector('form').innerHTML = '<input class="username"  type="text">'
+      document.querySelector('.username').focus()
+    }
+  </script>
+</body>
+</html>

@@ -3,39 +3,98 @@
     <!-- @input  xx = event.target.value   :value -->
     <!-- @change  xx = event.target.checked   :checked -->
     <!-- <input v-model="todo.done" type="checkbox" name="" :id="todo.id" class="checkbox" /> -->
-    <input @change="change" :checked="todo.done" type="checkbox" name="" :id="todo.id" class="checkbox" />
+    <input
+      @change="change"
+      :checked="todo.done"
+      type="checkbox"
+      name=""
+      :id="todo.id"
+      class="checkbox"
+    />
     <label class="completed" :for="todo.id">
       <span class="iconfont icon-duigou"></span>
     </label>
 
-    <p @dblclick="isEditing = true"  v-show="!isEditing" :class="['text', { done: todo.done }]">{{ todo.todoText }}</p>
-    <input class="text" v-show="isEditing" type="text" :value="todo.todoText" @blur="edit($event,todo.id)" >
-    <span v-show="!isEditing" @click="delTodo(todo.id)" class="iconfont icon-cha del"></span>
+    <p
+      @dblclick="handleDblclick"
+      v-show="!isEditing"
+      :class="['text', { done: todo.done }]"
+    >
+      {{ todo.todoText }}
+    </p>
+    <input
+      ref="input"
+      class="text"
+      v-show="isEditing"
+      type="text"
+      :value="todo.todoText"
+      @blur="edit($event, todo.id)"
+    />
+    <span
+      v-show="!isEditing"
+      @click="deleteTodo(todo.id)"
+      class="iconfont icon-cha del"
+    ></span>
   </li>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   // props: ["todoText", "id", "done"],
-  props: ["todo", "delTodo", "changeDone" ,'editTodo'],
+  props: ["todo", "delTodo", "changeDone", "editTodo"],
   // 当父组件传递给子组件的数据是对象类型的时候，子组件直接修改这个对象，可以成功，并不会报错
-  // 所以我们直接使用了 v-model 修改了 todo.done 
+  // 所以我们直接使用了 v-model 修改了 todo.done
   // 如果不直接修改 就想让 祖先组件定义修改方法，然后替他去执行。
   // 那么就不需要使用 v-model 换成 checked 和 change
   data() {
     return {
-      isEditing: false
-    }
+      isEditing: false,
+    };
   },
   methods: {
     change() {
       // 执行祖先提供的修改方法
-      this.changeDone(this.todo.id)
+      const { id, done } = this.todo;
+      axios
+        .patch(`http://localhost:3008/todos/${id}`, { done: !done })
+        .then((res) => {
+          console.log(res.data);
+          this.changeDone(id);
+        });
     },
-    edit(e,id){
-      this.editTodo(id, e.target.value)
-      this.isEditing = false
-    }
+    edit(e, id) {
+      axios
+        .patch(`http://localhost:3008/todos/${id}`, {
+          todoText: e.target.value,
+        })
+        .then((res) => {
+          console.log(res.data)
+          this.editTodo(id, e.target.value);
+          this.isEditing = false;
+        });
+    },
+    handleDblclick() {
+      this.isEditing = true;
+      // 当数据改变之后直接获取 dom 节点是获取不到的
+      // 使用原生的获得焦点方法 focus 让 input 获得焦点
+      // 需要 input  的  dom
+      // vue 中获取真实 dom 的方式
+      // 1. event
+      // 2. ref
+      // console.log(this.$refs.input)
+      // 虽然能获取到 input 但是获取到的 input 是没有更新 isEditing 之前的，也就是说这个 input 并没有出现，所以执行  focus 没有效果
+      // 可以使用 $nextTick 获取出现后的 input
+      this.$nextTick(() => {
+        this.$refs.input.focus();
+      });
+    },
+    deleteTodo(id) {
+      axios.delete(`http://localhost:3008/todos/${id}`).then(() => {
+        // console.log(res)
+        this.delTodo(id);
+      });
+    },
   },
 };
 </script>
