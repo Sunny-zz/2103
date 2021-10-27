@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <ul class="list">
-      <TodoItem v-bind='$listeners' v-for="todo in lists" :key="todo.id" v-bind:todo='todo' />
+      <TodoItem v-bind='$listeners' v-for="todo in lists" :key="todo.id" :todo='todo' />
     </ul>
   </div>
 </template>
