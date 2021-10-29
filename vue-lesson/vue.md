@@ -260,6 +260,27 @@ vue 实例(vue 组件)在初始化的过程中都会执行一些默认的函数,
 
 使用的时候当作模块导入使用即可
 
+### vue 中常用的插件
+在 @vue/cli 4.5.0 环境下使用的
+- axios 
+- 样式类  less  sass  stylus(少)     
+    less sass stylus Css预处理器 css扩展语言,其实就是高级的 css 写法， 需要编译 默认 vue 的官方环境中 自带了 less 和 sass stylus 的编译无需添加配置，就是需要下载对应包，直接使用即可。要注意 包的 版本。
+    - less 的安装及使用
+        - 直接安装 less 以及 less-loader  `npm i less less-loader --save-dev` less 4.1.2  less-loader 5 可用 10 不可用
+        - 使用的话两种方式 1. 直接在组件的 style 内使用 lang='less' style 就可以写 less 语法了 2. 使用 xx.less 文件新建样式文件，内部写 less 语法
+    - sass 的安装及使用
+        - 直接安装 node-sass 以及 sass-loader `npm i node-sass sass-loader --save-dev`  node-sass 4   sass-loader 8
+        - 使用的话 1. 直接在组件的 style 内使用 lang='scss' style 就可以写 sass 语法了   2. 使用 xx.scss 文件新建样式文件，内部写 sass 语法
+    - stylus 的安装及使用
+        - 直接安装 stylus 以及 stylus-loader `npm i stylus stylus-loader --save-dev` stylus 0.55  stylus-loader 3
+        - 使用的话 1. 直接在组件的 style 内使用 lang='stylus' style 就可以写 stylus 语法了   2. 使用 xx.stylus 文件新建样式文件，内部写 stylus 语法
+- lodash 
+- swiper 原生 js 插件。  也就是插件内使用的真实 dom 操作，并不是 vue 的组件形式的。初始化的时候要在 mounted 初始化
+- vue-awesome-swiper 
+
+
+## 插槽
+
 ## 指令
 v- 为前缀的 叫指令，指令值可以写成 js 表达式，当值改变的时候，会响应式的影响对应 dom。
 

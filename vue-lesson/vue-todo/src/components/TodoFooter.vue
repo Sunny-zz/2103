@@ -4,9 +4,9 @@
       >{{ activeNum }} item{{ activeNum === 1 ? "" : "s" }} left</span
     >
     <div class="btns">
-      <button :style="{color: filterType==='all' ? 'red' : 'black'}" @click="$emit('update:filterType', 'all')">All</button>
-      <button :style="{color: filterType==='active' ? 'red' : 'black'}" @click="$emit('update:filterType', 'active')">Active</button>
-      <button :style="{color: filterType==='completed' ? 'red' : 'black'}" @click="$emit('update:filterType', 'completed')">Completed</button>
+      <button :style="{color: filterType==='all' ? 'red' : 'black'}" @click="changType('all')">All</button>
+      <button :style="{color: filterType==='active' ? 'red' : 'black'}" @click="changType('active')">Active</button>
+      <button :style="{color: filterType==='completed' ? 'red' : 'black'}" @click="changType('completed')">Completed</button>
     </div>
     <button @click="handleDel" v-show="doneNum" class="right">Clear completed</button>
   </div>
@@ -18,6 +18,10 @@ export default {
   methods: {
     handleDel() {
       this.$emit('delComletedTodo')
+    },
+    changType(type){
+      this.$emit('update:filterType', type)
+      sessionStorage.setItem('filterType', type)
     }
   }
 };

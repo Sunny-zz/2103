@@ -28,6 +28,11 @@ export default {
   data() {
     return {
       lists: [],
+      // 我们希望用户再次使用 todo 的时候，能记录上一次访问的类别
+      // 但是这个类别后端并没有记录，需要前端单处理
+      // 以上这种情况在工作中比较常见  像登录功能 只请求一次
+      // 我们可以选择使用浏览器的本地存储功能来实现     cookie   localStorage  sessionStorage
+      // localStorage 时间长       sessionStorage  关闭了页面就消失了
       filterType: 'all'
     }
   },
@@ -70,6 +75,12 @@ export default {
       // console.log(res.data)
       this.lists = res.data 
     })
+    // 每次访问 todos 案例的时候都有可能去修改默认的 filterType
+    // 先去本地存储里面取保存的类别，取到了更新本地的类别，没取到默认就是 all
+    const filterType = sessionStorage.getItem('filterType')
+    if(filterType){
+      this.filterType = filterType
+    }
   },
   methods: {
     addTodo(todoText, id) {

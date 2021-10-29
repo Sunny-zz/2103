@@ -1,0 +1,11 @@
+// $textColor: #00b3d4;
+.btn{
+  padding: 8px 20px;
+  outline: none;
+  border: none;
+  background-color: #00b3d4;
+  color: #fff;
+}
+@mixin border {
+  border: 1px solid green;
+}
