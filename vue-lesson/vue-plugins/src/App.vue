@@ -9,7 +9,7 @@
     <hr>
     <LodashDemo />
     <hr>
-    <SwiperDemo />
+    <!-- <SwiperDemo /> -->
     <hr>
     <VueSwiperDemo />
     <hr>
@@ -23,11 +23,11 @@ import LodashDemo from './components/LodashDemo.vue'
 import SassDemo from './components/SassDemo.vue'
 import SlotDemo from './components/SlotDemo.vue'
 import StylusDemo from './components/StylusDemo.vue'
-import SwiperDemo from './components/SwiperDemo.vue'
+// import SwiperDemo from './components/SwiperDemo.vue'
 import VueSwiperDemo from './components/VueSwiperDemo.vue'
 
 export default {
-  components: { LessDemo, SassDemo, StylusDemo, LodashDemo, SwiperDemo, VueSwiperDemo, SlotDemo },
+  components: { LessDemo, SassDemo, StylusDemo, LodashDemo, VueSwiperDemo, SlotDemo },
 }
 </script>
 

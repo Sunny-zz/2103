@@ -35,6 +35,12 @@
         <button>确定</button>
       </template>
     </DialogDemo>
+    <!-- <DialogDemo >
+      <template #title>
+        <span>提示</span>
+      </template>
+      <p>我是一则提示信息</p>
+    </DialogDemo> -->
   </div>
 </template>
 
@@ -43,6 +49,7 @@ import DialogDemo from "./DialogDemo.vue";
 export default {
   components: { DialogDemo },
 };
+
 </script>
 
 <style>

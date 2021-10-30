@@ -277,9 +277,21 @@ vue 实例(vue 组件)在初始化的过程中都会执行一些默认的函数,
 - lodash 
 - swiper 原生 js 插件。  也就是插件内使用的真实 dom 操作，并不是 vue 的组件形式的。初始化的时候要在 mounted 初始化
 - vue-awesome-swiper 
+- element-ui  vue 的组件库， vue  ui 库(view ui  vuetify  mint ui)  ，就是已经写好的组件直接去使用。    
 
 
-## 插槽
+## 插槽 slot
+组件复用的一个技巧
+使用 
+父组件
+`<子组件><template #名 v-slot:名 >插槽1</template> 插槽2</子组件>`
+
+子组件
+`<slot />   <slot name='名' />`
+
+具名插槽
+
+作用域插槽
 
 ## 指令
 v- 为前缀的 叫指令，指令值可以写成 js 表达式，当值改变的时候，会响应式的影响对应 dom。
