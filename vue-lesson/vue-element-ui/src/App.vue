@@ -19,19 +19,29 @@
       src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png"
     />
     <el-divider conttent-position="center">分割线</el-divider>
-    <el-drawer
+    <!-- <el-drawer
       title="我是标题"
       :visible="show"
       :before-close="handleClose"
     >
       <span>我来啦!</span>
-    </el-drawer>
+    </el-drawer> -->
+     <el-divider conttent-position="center">分割线</el-divider>
+     <Banner />
+     <el-divider conttent-position="center">分割线</el-divider>
+     <TabsDemo />
+     <el-divider conttent-position="center">分割线</el-divider>
+     <ScopeSlotDemo />
   </div>
 </template>
 
 <script>
+import Banner from './components/Banner.vue';
+import ScopeSlotDemo from './components/ScopeSlotDemo.vue';
+import TabsDemo from './components/TabsDemo.vue';
 // 组件注册
 export default {
+  components: { Banner, TabsDemo, ScopeSlotDemo },
   name: "app",
   data() {
     return {
@@ -41,7 +51,7 @@ export default {
   methods: {
     handleClose(done){
       // 关闭抽屉
-      done() 
+      done()
     }
   },
 };

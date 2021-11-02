@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // import Element from 'element-ui'
 // 命名导入
-import { Button,Avatar,Divider, Drawer } from 'element-ui'
+import { Button,Avatar,Divider, Drawer, Carousel,CarouselItem,Tabs,TabPane,Table,TableColumn, Rate, Tag } from 'element-ui'
 // element ui 的样式文件
 // import 'element-ui/lib/theme-chalk/index.css'
 
@@ -15,3 +15,11 @@ Vue.use(Button)
 Vue.use(Avatar)
 Vue.use(Divider)
 Vue.use(Drawer)
+Vue.use(Carousel)
+Vue.use(CarouselItem)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Rate)
+Vue.use(Tag)
