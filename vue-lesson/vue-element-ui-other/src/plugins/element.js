@@ -1,6 +1,23 @@
 import Vue from 'vue'
-import { Button, Dialog, Drawer } from 'element-ui'
+import { Button, Checkbox, CheckboxGroup, Col, DatePicker, Dialog, Divider, Drawer, Form, FormItem, Input, Option, Pagination, Radio, RadioGroup, Select, Skeleton, SkeletonItem, Switch, TimePicker } from 'element-ui'
 
 Vue.use(Drawer)
 Vue.use(Dialog)
 Vue.use(Button)
+Vue.use(Pagination)
+Vue.use(Divider)
+Vue.use(Skeleton)
+Vue.use(SkeletonItem)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Col)
+Vue.use(DatePicker)
+Vue.use(TimePicker)
+Vue.use(Switch)
+Vue.use(CheckboxGroup)
+Vue.use(Checkbox)
+Vue.use(RadioGroup)
+Vue.use(Radio)
