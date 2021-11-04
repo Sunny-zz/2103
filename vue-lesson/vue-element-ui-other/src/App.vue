@@ -9,7 +9,8 @@
     <FormDemo />
     <!-- <el-divider align='center' >分割线</el-divider>
     <el-input v-model="text" placeholder="请输入内容"></el-input> -->
-    
+    <el-divider align='center' >分割线</el-divider>
+    <TreeDemo />
   </div>
 </template>
 
@@ -24,8 +25,9 @@ import DialogDemo from './components/DialogDemo.vue'
 import DrawerDemo from './components/DrawerDemo.vue'
 import FormDemo from './components/FormDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
+import TreeDemo from './components/TreeDemo.vue'
 export default {
-  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo },
+  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo },
   // data() {
   //   return {
   //     text: ''

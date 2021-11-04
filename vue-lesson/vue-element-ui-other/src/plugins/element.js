@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Button, Checkbox, CheckboxGroup, Col, DatePicker, Dialog, Divider, Drawer, Form, FormItem, Input, Option, Pagination, Radio, RadioGroup, Select, Skeleton, SkeletonItem, Switch, TimePicker } from 'element-ui'
+import { Button, Checkbox, CheckboxGroup, Col, DatePicker, Dialog, Divider, Drawer, Form, FormItem, Input, Option, Pagination, Radio, RadioGroup, Select, Skeleton, SkeletonItem, Switch, TimePicker, Tree } from 'element-ui'
 
 Vue.use(Drawer)
 Vue.use(Dialog)
@@ -21,3 +21,4 @@ Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(RadioGroup)
 Vue.use(Radio)
+Vue.use(Tree)
