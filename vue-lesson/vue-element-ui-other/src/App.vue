@@ -13,6 +13,8 @@
     <TreeDemo />
     <el-divider align='center' >分割线</el-divider>
     <AsyncTreeDemo />
+    <el-divider align='center' >分割线</el-divider>
+    <NoticeDemo />
   </div>
 </template>
 
@@ -27,10 +29,11 @@ import AsyncTreeDemo from './components/AsyncTreeDemo.vue'
 import DialogDemo from './components/DialogDemo.vue'
 import DrawerDemo from './components/DrawerDemo.vue'
 import FormDemo from './components/FormDemo.vue'
+import NoticeDemo from './components/NoticeDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
 import TreeDemo from './components/TreeDemo.vue'
 export default {
-  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo, AsyncTreeDemo },
+  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo, AsyncTreeDemo, NoticeDemo },
   // data() {
   //   return {
   //     text: ''
