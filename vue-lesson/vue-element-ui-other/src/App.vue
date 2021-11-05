@@ -11,10 +11,13 @@
     <el-input v-model="text" placeholder="请输入内容"></el-input> -->
     <el-divider align='center' >分割线</el-divider>
     <TreeDemo />
+    <el-divider align='center' >分割线</el-divider>
+    <AsyncTreeDemo />
   </div>
 </template>
 
 <script>
+import AsyncTreeDemo from './components/AsyncTreeDemo.vue'
 // 当我们使用 element-ui 组件的时候，文档中的
 // 组件的 Attributes 就是我们 vue 中的  prop
 // 组件的 Slot 就是我们 vue 中的插槽
@@ -27,7 +30,7 @@ import FormDemo from './components/FormDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
 import TreeDemo from './components/TreeDemo.vue'
 export default {
-  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo },
+  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo, AsyncTreeDemo },
   // data() {
   //   return {
   //     text: ''
