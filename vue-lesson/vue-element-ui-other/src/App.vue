@@ -15,6 +15,8 @@
     <AsyncTreeDemo />
     <el-divider align='center' >分割线</el-divider>
     <NoticeDemo />
+    <el-divider align='center' >分割线</el-divider>
+    <EchartsDemo />
   </div>
 </template>
 
@@ -28,12 +30,13 @@ import AsyncTreeDemo from './components/AsyncTreeDemo.vue'
 // 当使用一些文档中的函数的时候需要注意函数的参数
 import DialogDemo from './components/DialogDemo.vue'
 import DrawerDemo from './components/DrawerDemo.vue'
+import EchartsDemo from './components/EchartsDemo.vue'
 import FormDemo from './components/FormDemo.vue'
 import NoticeDemo from './components/NoticeDemo.vue'
 import PaginationDemo from './components/PaginationDemo.vue'
 import TreeDemo from './components/TreeDemo.vue'
 export default {
-  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo, AsyncTreeDemo, NoticeDemo },
+  components: { DrawerDemo, DialogDemo, PaginationDemo, FormDemo, TreeDemo, AsyncTreeDemo, NoticeDemo, EchartsDemo },
   // data() {
   //   return {
   //     text: ''

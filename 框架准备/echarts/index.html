@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    /* body {
+      color: #c14ecc;
+    } */
+  </style>
 </head>
 
 <body>
@@ -18,6 +23,25 @@
   <script>
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.querySelector('.main'));
+    const colors = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
+    const data = [5, 20, 36, 100, 10, 20]
+
+    const changeData = () => {
+      data.forEach((ele, index) => {
+        if (Math.random() > 0.5) {
+          // ele += Math.round(Math.random() * 100)  没有用
+          data[index] += Math.round(Math.random() * 100)
+        } else {
+          data[index] += Math.round(Math.random() * 200)
+        }
+      })
+      myChart.setOption({
+        series: [{
+          type: 'bar',
+          data: data
+        }]
+      })
+    }
 
     // 指定图表的配置项和数据
     var option = {
@@ -31,34 +55,61 @@
         // trigger: 'item'
       },
       legend: {
-        data: ['销量','价格'],
+        data: ['销量', '价格'],
         // padding: 100
       },
       xAxis: {
-        data: ['衬衫', {value: '羊毛衫', textStyle: {color: 'red'}}, '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        // type: 'category',
+        data: ['衬衫', { value: '羊毛衫', textStyle: { color: 'red' } }, '雪纺衫', '裤子', '高跟鞋', '袜子'],
         axisPointer: {
           // show: true
-        }
+        },
+        // inverse : true,
+        max: 3,
       },
-      yAxis: {},
+      yAxis: {
+        
+      },
       // series 是图标的系列
       // 有几个图表   图表的类型   图表的 name    
       series: [
         {
           name: '销量',
           type: 'bar',
-          data: [5, 20, 36, 100, 10, 20] 
+          data: data,
+          realtimeSort: true,
+          itemStyle: {
+            // 如果销量每一个柱子都是不同给的颜色，那么可以将 color 设置成函数，根据参数 param 去动态设置每一个柱子的颜色
+            // 如果是一个颜色的话直接将 color 的值写成一个字符串即可
+            // color: function (param) {
+            //   console.log(param)
+            //   return colors[param.dataIndex]
+            // }
+            color: 'red'
+          },
         },
-        {
-          name: '价格',
-          type: 'bar',
-          data: [50, 200, 306, 100, 100, 200]
-        }
+        // {
+        //   name: '价格',
+        //   type: 'bar',
+        //   data: [50, 200, 306, 100, 100, 200],
+        //   itemStyle: {
+        //     // 如果销量每一个柱子都是不同给的颜色，那么可以将 color 设置成函数，根据参数 param 去动态设置每一个柱子的颜色
+        //     // 如果是一个颜色的话直接将 color 的值写成一个字符串即可
+        //     // color: function (param) {
+        //     //   console.log(param)
+        //     //   return colors.slice().reverse()[param.dataIndex]
+        //     // }
+        //     color: 'blue'
+        //   },
+        // }
       ]
     };
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+    setInterval(() => {
+      changeData()
+    }, 5000);
   </script>
 </body>
 

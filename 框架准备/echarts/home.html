@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      color: sandybrown;
+      color: rgb(47, 47, 46);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main" style="width: 1200px;height:400px;"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+  <script>
+    var myChart = echarts.init(document.querySelector('.main'));
+    // 指定图表的配置项和数据
+    var option = {
+      title: {
+        text: 'ECharts 入门示例',
+        textStyle: {
+          fontSize: 20
+        }
+      },
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: 'rgba(47, 47, 46,0.7)',
+        borderWidth: 0,
+        // formatter: '{a} <br> {c}k',
+        formatter: (params, ticket, callback) => {
+          // console.log(params)
+          // console.log(ticket)
+          // console.log(callback)
+          const seriesName = params.seriesName ?? params.name
+          const data = params.value
+          return `<div style='text-align: center;'>${seriesName}</div><div style='text-align: center;'>${data}k</div>`
+        },
+        textStyle: {
+          color: '#fff'
+        },
+        // extraCssText: 'text-align: center;'
+      },
+      legend: {
+        right: 100
+      },
+      xAxis: {
+        boundaryGap: false,
+        data: ['平面设计师', '网页设计师', '移动 ui 设计师', '产品设计师', 'ui交互设计师'],
+      },
+      yAxis: {
+        min: 6,
+        max: 24,
+        name: '薪资待遇（k元/月）',
+        axisLine: {
+          show: true,
+        },
+        axisTick: {
+          show: true
+        }
+      },
+      series: [
+        {
+          name: '最低薪资',
+          type: 'line',
+          data: [6, 8, 9, 10, 14],
+          itemStyle: {
+            color: 'sandybrown'
+          },
+          markPoint: {
+            data: [
+              { type: 'max', name: '最低薪资' },
+            ]
+          },
+        },
+        {
+          name: '最高薪资',
+          type: 'line',
+          data: [8, 10, 11, 15, 20],
+          itemStyle: {
+            color: 'orangered'
+          },
+          markPoint: {
+            data: [
+              { type: 'max', name: '最高薪资' },
+            ]
+          },
+        },
+
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>

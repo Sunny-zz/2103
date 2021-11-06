@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main" style="width: 1200px;height:400px;"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.2/echarts.min.js"></script>
+  <script>
+    const positions = [
+      {
+        id: 1,
+        city: '上海',
+        positions: 3603
+      },
+      {
+        id: 2,
+        city: '北京',
+        positions: 1792
+      },
+      {
+        id: 3,
+        city: '深圳',
+        positions: 1690
+      },
+      {
+        id: 4,
+        city: '广州',
+        positions: 1271
+      },
+      {
+        id: 5,
+        city: '武汉',
+        positions: 1144
+      }
+    ].reverse()
+    const colors = ['#5470c6', '#91cc75', '#fac858', '#ee6666', '#73c0de']
+    const salarys = [
+      {
+        id: 1,
+        region: '4k-6k',
+        percentage: 3.9
+      },
+      {
+        id: 2,
+        region: '6k-8k',
+        percentage: 18.8
+      },
+      {
+        id: 3,
+        region: '8k-10k',
+        percentage: 18.8
+      },
+      {
+        id: 4,
+        region: '10k-15k',
+        percentage: 41.1
+      },
+      {
+        id: 5,
+        region: '15k-20k',
+        percentage: 10.9
+      },
+      {
+        id: 6,
+        region: '20k-30k',
+        percentage: 6.5
+      }
+    ]
+    var myChart = echarts.init(document.querySelector('.main'));
+
+    const option = {
+      // dataset 数据集  指的是 图表所用到的数据，
+      // 假如我们这个图表有两个或者多个图表，那么 series 内就需要使用多个 data 去设置每个图表对应的数据，假如这个数据有关联
+      // 那么我们就可以使用 数据集去管理这个数据，数据集提供了很多处理数据的方法， 数据的复用和转换就变得简单了
+      // dataset:[
+      //   {
+      //     // 初始资源
+      //     source: positions,
+      //     dimensions: ['positions', 'city'],
+      //   }
+      // ],
+      
+      tooltip: {},
+      // grid 的 宽度控制图表宽度
+      grid: [
+        {
+          width: '35%',
+          left: '5%'
+        }
+      ],
+      legend: [
+        {
+          show: false
+        },
+        {
+          orient: 'vertical',
+          right: 0,
+          bottom: 40,
+          data: salarys.map(ele => ({ name: ele.region, value: ele.region }))
+        }
+      ],
+      xAxis: {
+        max: 3700,
+        min: 0,
+        show: false
+      },
+      yAxis: [
+        {
+          type: 'category',
+          data: positions.map(ele => ele.city),
+          axisTick: {
+            length: 5,
+            lineStyle: {
+              shadowOffsetX: 6
+            }
+          }
+        },
+        {
+          type: 'category',
+          data: positions.map(ele => ele.positions + '职位'),
+          axisLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
+        }
+      ],
+      series: [
+        {
+          name: '职位',
+          type: 'bar',
+          data: positions.map(ele => ele.positions),
+          itemStyle: {
+            color(param) {
+              return colors[param.dataIndex]
+            }
+          },
+          tooltip: {
+            formatter(params) {
+              // console.log(params)
+              return `<span style="display: inline-block; width: 8px;height: 8px;border-radius: 50%;background-color: ${params.color}; margin-right: 4px;"></span> ${params.name}: ${params.value}`
+            },
+            backgroundColor: 'rgba(47, 47, 46,0.7)',
+            borderWidth: 0,
+            textStyle: {
+              color: '#fff'
+            }
+          }
+        },
+        {
+          name: '薪资',
+          type: 'pie',
+          data: salarys.map(ele => ({ name: ele.region, value: ele.percentage })),
+          center: ['70%', '50%'],
+          radius: ['30%', '70%'],
+          tooltip: {}
+        }
+      ]
+    }
+    myChart.setOption(option)
+  </script>
+</body>
+
+</html>
