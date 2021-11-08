@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>文章列表页</h3>
+    <h3>{{type}}文章列表页</h3>
     <ul v-if="list.length">
       <li v-for="num in list" :key="num">{{num}}</li>
     </ul>
@@ -13,24 +13,37 @@
 // 全局路由数据 1. $route 当前路由信息  2. $router 全部的路由信息
 // $route 内
 // params 属性 动态路由参数对象
+// query 属性 路由的查询部分
 export default {
+  props: {
+    type: {
+      type: String,
+      default: 'recommended'
+    }
+  },
   data() {
     return {
       list: []
     }
+  },
+  created () {
+    console.log(this.$route)
   },
   watch: {
     // 当监听一个数据的时候
     // 这个数据可以是 data  prop  路由相关数据
     // 而且监听的数据不需要使用 this
     // 还有可以直接对象下的某一属性监听, 写成  '对象.属性' 即可
-    "$route.params.type": {
+    "type": {
       handler(newValue) {
-        console.log(newValue);
+        // console.log(newValue);
+        // const type = newValue ?? 'recommended'
         if( newValue ==='frontend'){
           this.list = [1,2,3]
-        }else{
+        }else if(newValue === 'backend'){
           this.list = [4,5,6]
+        }else if(newValue === 'recommended'){
+          this.list = [7,8,9]
         }
       },
       immediate: true

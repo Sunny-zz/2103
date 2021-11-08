@@ -14,6 +14,18 @@
 
 // 动态路由
 // 当很多页样式相同，只有数据不同，比如文章详情页，文章详情，我们使用动态路由实现，也就是很多页展示一个组件。
+
+// 编程式导航
+
+// 命名路由
+
+// 重定向和别名
+
+// 路由组件传参
+// 当我们的组件被制作成了路由组件的时候，那么给组件传递参数就不能像以前一样使用 prop 以及自定义事件和插槽了
+// 在路由组件中也可以传递参数， 组件内也可以使用 props 接收
+
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
@@ -28,9 +40,17 @@ Vue.use(VueRouter)
 // 这个路由是整个项目内的所有路由
 // 那么要写子路由的话需要给父路由添加一个 children 属性，属性值是数组
 const routes = [
+  // {
+  //   path: '/about',
+  //   redirect: '/xxx'
+  // },
   {
     component: About,
-    path: '/about'
+    alias: '/about',
+    path: '/xxx',
+    // 命名路由
+    // 作用是当你想要跳转到这个路由的时候，你一定需要使用地址跳转，可以直接使用 name 跳转
+    name: 'xxx'
   },
   // 路由对象
   // component 属性，属性值是组件
@@ -41,11 +61,26 @@ const routes = [
     //   /   就表示根地址   根地址就是  协议+域名+端口号   没有路径
     path: '/',
     children: [
+      // 默认子路由， 父路由出现的时候默认子路由就会出现
+      {
+        // 当父级有默认子路由的时候， 要给父级路由命名的话，不能直接写在父级路由对象内，需要写在默认的子路由内
+        name: 'home',
+        component: PostList,
+        path: ''
+      },
       {
         component: PostList,
         // 子页面的 path 写法是有限制
         // 比如 父路由地址是  https://juejin.cn  子页面地址 https://juejin.cn/frontend 那么子路由的 path 写成  'frontend'
-        path: ':type'
+        path: ':type',
+        name: 'postList',
+        // 这个 props 属性 设置成 true 相当于，将 动态路由参数当作 prop 传递给了 PostList 组件
+        // props 属性设置成 对象的话，会将对象下的所有属性当作 prop 传递给组件，但是只能是静态的数据(动态路由参数是不可以的)
+        // props 可以设置成函数，该函数默认接受 route(当前路由信息) 作为参数, 该函数的返回值需要写成对象，这个对象下的所有属性会被当作 prop 传递给组件
+        props: route => ({
+          type: route.params.type,
+          a: 10
+        })
       }
     ]
   },
