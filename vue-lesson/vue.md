@@ -305,6 +305,37 @@ v- 为前缀的 叫指令，指令值可以写成 js 表达式，当值改变的
 - v-bind 
 - v-html
 
+## vue 路由  vue-router
+- 安装    
+    - 直接 npm i vue-router 
+    - 使用 vue cli 提供给的插件方式安装
+- 创建
+    - 导入 VueRouter 使用 Vue.use(VueRouter) 将路由变成全局的
+    - 创建路由
+        - 创建路由数组 routes   
+        - 创建路由实例 
+    - 将创建好的路由导入main，挂载到创建 vue 的根实例内
+- 使用
+    - router-view 根据页面地址展示路由组件(默认只会展示最外层的路由)
+    - router-link 切换页面地址
+
+动态路由
+编程式导航
+重定向和别名
+
+路由创建好之后，所有的组件内都可以使用 $route  $router 两个属性
+路由组件传参其实就是可以将动态路由参数当作 prop 传递给路由组件，也可以传递其他的数据
+
+路由组件的使用  router-link  router-view 的一些 prop 或 插槽
+
+router-link
+- v-slot
+- to  {path: '/about'}  {name: '', query: {}, params: {}}
+- tag 
+- replace 
+- append *
+- active-class  
+- exact 
 
 ### 提示
 - vue 项目内没有特殊情况不能使用 原生的 dom 操作
