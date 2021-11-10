@@ -328,6 +328,19 @@ v- 为前缀的 叫指令，指令值可以写成 js 表达式，当值改变的
 
 路由组件的使用  router-link  router-view 的一些 prop 或 插槽
 
+路由导航守卫
+1. 全局       全局前置守卫    全局解析守卫    全局后置钩子
+2. 路由内的   路由前置守卫
+3. 组件内的   跳转之前   跳转更新(组件的复用)  跳转离开 
+
+路由元信息
+路由对象中的 meta 字段，一般 meta 字段内写的是权限相关。 
+一个页面地址可以匹配多个路由记录(对象), 我们使用 $route.matched , 循环找到所有的 meta 字段
+
+过渡动效
+
+
+
 router-link
 - v-slot
 - to  {path: '/about'}  {name: '', query: {}, params: {}}
@@ -336,6 +349,8 @@ router-link
 - append *
 - active-class  
 - exact 
+
+## vue 中的 进入/离开 & 列表过渡
 
 ### 提示
 - vue 项目内没有特殊情况不能使用 原生的 dom 操作

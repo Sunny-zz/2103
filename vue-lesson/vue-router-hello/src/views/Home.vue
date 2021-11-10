@@ -1,11 +1,10 @@
 <template>
-  <transition name="fade">
     <div class="home">
+      <button @click="$router.back()">返回</button>
       <img alt="Vue logo" src="../assets/logo.png" />
       <router-link :to="{ path: '/list' }">去列表页</router-link>
       <router-view></router-view>
     </div>
-  </transition>
 </template>
 
 <script>

@@ -1,10 +1,11 @@
 <template>
-  <transition name="rotate">
-    <div class="about">
-      <h1>This is an about page</h1>
-      <TransitionDemo />
-    </div>
-  </transition>
+  <div class="about">
+    <h1>This is an about page</h1>
+    <button class="btn">
+      <router-link :to='{name: "Home"}'> home </router-link>
+    </button>
+    <TransitionDemo />
+  </div>
 </template>
 <script>
 import TransitionDemo from "../components/TransitionDemo.vue";
@@ -14,12 +15,11 @@ export default {
 </script>
 <style>
 .about {
-  transform: rotate(0);
+  height: 2000px;
 }
-.rotate-enter{
-  transform: rotate(360deg);
-}
-.rotate-enter-active{
-  transition: all 1s;
+.btn {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
 }
 </style>

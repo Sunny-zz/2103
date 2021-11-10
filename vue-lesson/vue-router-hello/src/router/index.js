@@ -38,7 +38,20 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from ,savePosition){
+    // if(to.path === '/list'){
+    //   return {x: 0, y: 0, behavior: 'smooth',}
+    // }else{
+    //   return false
+    // }
+    // 只有在 模拟浏览器 前进后退按钮的时候才能记录
+    if(savePosition){
+      return savePosition
+    }else{
+      return {x: 0, y: 0}
+    }
+  }
 })
 
 
