@@ -1,0 +1,18 @@
+{
+  "postList": [
+    {
+      "id": "3w1312",
+      "title": "vue",
+      "author": "小兰",
+      "status": "published",
+      "important": 3
+    },
+    {
+      "id": "897y6y",
+      "title": "react",
+      "author": "小红",
+      "status": "draft",
+      "important": 2
+    }
+  ]
+}

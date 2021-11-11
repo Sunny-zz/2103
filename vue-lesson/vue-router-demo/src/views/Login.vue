@@ -95,7 +95,7 @@ export default {
       setTimeout(() => {
         if(username === 'admin' && password === '888888'){
           // console.log('密码匹配，要跳转')
-          this.$router.push('/')
+          
           this.$message.success({
             message: '登陆成功',
             duration: 1000
@@ -110,6 +110,7 @@ export default {
             token: '特殊的加密内容'
           }
           sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+          this.$router.push('/')
         }else{
           this.$message.error({
             message: '错了哦，用户名密码不匹配',
