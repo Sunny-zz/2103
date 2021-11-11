@@ -1,15 +1,20 @@
 <template>
   <div>
-    <h2>首页的默认内容</h2>
+    <el-button type="primary">
+      <router-link class="link" :to="{ name: 'postlist' }"
+        >文章列表</router-link
+      >
+    </el-button>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang='less'>
+.link {
+  color: #fff;
+  text-decoration: none;
+}
 </style>

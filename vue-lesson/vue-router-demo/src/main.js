@@ -4,6 +4,7 @@ import router from './router'
 import './plugins/element.js'
 import './assets/style.less'
 import './filters'
+import './plugins/axios'
 Vue.config.productionTip = false
 
 

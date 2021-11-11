@@ -18,24 +18,11 @@
       <div class="right-menu">
         <img :src="userInfo.avatar_url" :title="userInfo.username" alt="" />
 
-        <el-button class="post-list" type="text"
-          ><router-link :to="{ name: 'postlist' }"
-            >文章列表</router-link
-          ></el-button
-        >
-
-        <el-button class="edit-post" type="text"
-          ><router-link :to="{ name: 'editpost' }"
-            >编辑文章</router-link
-          ></el-button
-        >
-
         <el-button class="profile" type="text"
           ><router-link :to="{ name: 'profile' }"
             >个人中心</router-link
           ></el-button
         >
-
         <el-button @click="logout" type="text">退出登录</el-button>
       </div>
     </div>
