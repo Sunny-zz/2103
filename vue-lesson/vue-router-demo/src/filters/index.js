@@ -6,6 +6,7 @@ Vue.filter('translate', function (value) {
   switch(newValue){
     case '': return '首页';
     case 'profile': return '个人中心';
+    case 'editpost/:id': return '编辑文章';
     case 'editpost': return '编辑文章';
     case 'postlist': return '文章列表';
   }

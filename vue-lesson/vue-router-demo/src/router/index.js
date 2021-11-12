@@ -25,9 +25,10 @@ const routes = [
         name: 'postlist'
       },
       {
-        path: 'editpost',
+        path: 'editpost/:id',
         component:EditPost,
-        name: 'editpost'
+        name: 'editpost',
+        props: true
       },
       {
         path: 'profile',

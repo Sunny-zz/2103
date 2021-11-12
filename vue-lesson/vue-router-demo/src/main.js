@@ -5,6 +5,7 @@ import './plugins/element.js'
 import './assets/style.less'
 import './filters'
 import './plugins/axios'
+import './plugins/mavon'
 Vue.config.productionTip = false
 
 

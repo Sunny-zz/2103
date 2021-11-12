@@ -5,11 +5,13 @@
       <div class="breadcrumb">
         <el-breadcrumb separator="/">
           <!-- 一个面包屑需要提供 展示的文字 以及 跳转的目标地址 -->
-          <el-breadcrumb-item v-for="item in breadcrumb" :key="item">
-            <router-link :to="{ path: item }">
-              {{ item.slice(1) | translate }}
-            </router-link>
-          </el-breadcrumb-item>
+          <transition-group name="moveRight" tag='div'>
+            <el-breadcrumb-item v-for="item in breadcrumb" :key="item">
+              <router-link :to="{ path: item }">
+                {{ item.slice(1) | translate }}
+              </router-link>
+            </el-breadcrumb-item>
+          </transition-group>
           <!-- 在当前页面使用面包屑自带的导航切换到当页面的时候会报错 -->
           <!-- 其实是因为面包屑切换路由使用的是 a 标签做的切换 -->
           <!-- 我们将面包屑的切换路由替换成 router-link  也就是给面包屑写插槽 -->
@@ -70,6 +72,7 @@ export default {
       // 2. 清除登录状态和数据   清空 sessionStorage
       this.$router.push("/login");
       sessionStorage.removeItem("userInfo");
+      sessionStorage.removeItem("postList-page");
     },
   },
 };
@@ -87,6 +90,13 @@ export default {
       height: 50px;
       display: flex;
       align-items: center;
+      .moveRight-enter, .moveRight-leave-to{
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      .moveRight-enter-active, .moveRight-leave-active{
+        transition: all .5s;
+      }
     }
     .right-menu {
       display: flex;
