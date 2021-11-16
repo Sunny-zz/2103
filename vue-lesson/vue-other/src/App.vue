@@ -1,21 +1,33 @@
 <template>
   <div>
     <DynamicDemo />
-    <hr>
+    <hr />
     <EdgeDemo />
+    <hr />
+    <CustomDirective />
+    <hr />
+    <RenderFunction />
+    <hr>
+    <MyButton />
+    <hr>
+    <PluginsDemo />
   </div>
 </template>
 
 <script>
-import DynamicDemo from './components/DynamicDemo.vue'
-import EdgeDemo from './components/EdgeDemo.vue'
+import CustomDirective from "./components/CustomDirective.vue";
+import DynamicDemo from "./components/DynamicDemo.vue";
+import EdgeDemo from "./components/EdgeDemo.vue";
+import RenderFunction from "./components/RenderFunction.vue";
+import MyButton from './components/FunComponent'
+import PluginsDemo from './components/PluginsDemo.vue';
 export default {
-  components: { DynamicDemo, EdgeDemo }
-}
+  components: { DynamicDemo, EdgeDemo, CustomDirective, RenderFunction, MyButton, PluginsDemo },
+};
 </script>
 
 <style>
-body{
+body {
   height: 3000px;
 }
 </style>

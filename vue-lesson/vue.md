@@ -352,6 +352,17 @@ router-link
 
 ## vue 中的 进入/离开 & 列表过渡
 
+## 动态组件  
+keep-alive
+
+## 处理边界情况
+- 获取元素&组件    $parent   $children   $root   ref   
+- 依赖注入  provide  inject 
+- 程序化事件侦听器  $on  $once  $off , 一些特殊的自定义事件  hook:created ... 
+- 控制更新  v-once    $set()  让对象的新增属性操作，引发视图的变化
+- 循环引用 
+
+
 ### 提示
 - vue 项目内没有特殊情况不能使用 原生的 dom 操作
 
