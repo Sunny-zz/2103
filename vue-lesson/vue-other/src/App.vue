@@ -23,7 +23,11 @@ import MyButton from './components/FunComponent'
 import PluginsDemo from './components/PluginsDemo.vue';
 export default {
   components: { DynamicDemo, EdgeDemo, CustomDirective, RenderFunction, MyButton, PluginsDemo },
+  created () {
+    console.log(this.$myMethod);
+  },
 };
+
 </script>
 
 <style>

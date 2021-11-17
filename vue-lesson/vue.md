@@ -362,6 +362,25 @@ keep-alive
 - 控制更新  v-once    $set()  让对象的新增属性操作，引发视图的变化
 - 循环引用 
 
+## 自定义指令
+
+## 渲染函数 & jsx
+Render 方法   jsx 语法
+函数式组件 给组件添加一个 functional: true 属性
+.js 组件  Vue.component   直接导出一个对象
+
+
+## vuex 状态管理
+- 安装  npm i vuex 
+- 使用
+    - Vue.use 添加成全局功能
+    - 创建 store   (state, mutations)
+    - new Vue 的时候挂载 store
+    - 组件内的使用  $store.state    
+    - 组件内修改 $store.commit 
+
+## 插件功能
+
 
 ### 提示
 - vue 项目内没有特殊情况不能使用 原生的 dom 操作
