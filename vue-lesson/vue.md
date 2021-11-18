@@ -379,6 +379,12 @@ Render 方法   jsx 语法
     - 组件内的使用  $store.state    
     - 组件内修改 $store.commit 
 
+vuex 中的知识点
+- state 
+- mutations        commit     mutation 函数  (state, 载荷) => { state 的修改}
+- getters    getter 函数 (state, getters) => 返回计算结果
+
+
 ## 插件功能
 
 

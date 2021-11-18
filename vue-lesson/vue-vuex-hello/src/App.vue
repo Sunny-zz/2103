@@ -1,20 +1,17 @@
 <template>
   <div>
-    <!-- <h2>hello Vuex</h2>
-    <Count /> -->
-    <ShoppingCart />
+    <TodoMvc />
   </div>
 </template>
 
 <script>
-import ShoppingCart from './components/ShoppingCart.vue';
-// import Count from './components/Count.vue';
+import TodoMvc from './components/TodoMvc.vue'
 export default {
-  components: { ShoppingCart },
-  // components: { Count },
-};
+  components: { TodoMvc },
+
+}
 </script>
 
 <style>
+
 </style>
-Count
