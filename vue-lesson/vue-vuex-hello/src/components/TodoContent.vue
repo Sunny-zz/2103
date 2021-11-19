@@ -28,7 +28,10 @@ export default {
     //   // todos: 'todos'
     //   todos: (state) => state.todos
     // }),
-    ...mapState(['todos']),
+    // ...mapGetters(['showTodos']),
+    ...mapState({
+      todos: state => state.todos.todos
+    })
   },
 };
 </script>

@@ -1,14 +1,19 @@
 {
   "todos": [
     {
-      "id": "2ded4",
-      "text": "学习 vue",
-      "isDone": true
-    },
-    {
       "id": "12des",
       "text": "学习 react",
       "isDone": true
+    },
+    {
+      "text": "vue vuex vue-router",
+      "isDone": true,
+      "id": "NcwyPe6"
+    },
+    {
+      "text": "123",
+      "isDone": false,
+      "id": "yM5wyGG"
     }
   ]
 }

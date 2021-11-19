@@ -383,7 +383,13 @@ vuex 中的知识点
 - state 
 - mutations        commit     mutation 函数  (state, 载荷) => { state 的修改}
 - getters    getter 函数 (state, getters) => 返回计算结果
+- actions  当需要异步修改 state 的时候，异步操作放在 action 内， 在 action 内发 mutation 从而修改 state    dispatch 发 action
 
+
+vuex 的辅助函数
+- mapState
+- mapMutations
+- mapActions
 
 ## 插件功能
 
