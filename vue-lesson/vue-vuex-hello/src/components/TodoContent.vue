@@ -1,12 +1,12 @@
 <template>
   <div class="todo-content">
-    <TodoItem v-for="todo in todos" :key="todo.id" v-bind="todo" />
+    <TodoItem v-for="todo in showTodos" :key="todo.id" v-bind="todo" />
   </div>
 </template>
 
 <script>
 import TodoItem from "./TodoItem.vue";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   components: { TodoItem },
   // 当我们获取 store 数据的时候一般都是计算属性获取
@@ -28,11 +28,12 @@ export default {
     //   // todos: 'todos'
     //   todos: (state) => state.todos
     // }),
-    // ...mapGetters(['showTodos']),
-    ...mapState({
-      todos: state => state.todos.todos
-    })
-  },
+    ...mapGetters(['showTodos']),
+    // ...mapState({
+    //   todos: state => state.todos.todos
+    // })
+    // ...mapState(['todos']),
+  }
 };
 </script>
 

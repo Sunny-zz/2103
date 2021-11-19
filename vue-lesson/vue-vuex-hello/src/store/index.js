@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import filterType from './modules/filterType'
 import todos from './modules/todos'
 Vue.use(Vuex)
 
@@ -9,6 +10,7 @@ export default new Vuex.Store({
   state: {
     // todos: [],
     // filterType: 'all'
+
   },
   // mutation 函数只能包含同步操作，虽然写异步操作看上去没什么问题，但是底层追踪 state 变化的时候就追踪不到。
   mutations: {
@@ -80,23 +82,29 @@ export default new Vuex.Store({
     //   commit('changeTodoText', {id, text})
     // }
   },
-
+  // 根 getters   内的 state 就是 根 state 包括所有模块的
   getters: {
     // activeTodosNum(state) {
     //   return state.todos.filter(ele => !ele.isDone).length
     // },
-    // showTodos(state) {
-    //   const { todos , filterType} = state
-    //   return todos.filter(ele => filterType === 'all' ?  true : filterType === 'active' ? !ele.isDone : ele.isDone )
-    // }
+    showTodos(state) {
+      const todos = state.todos.todos
+      const filterType = state.filterType.filterType
+      return todos.filter(ele => filterType === 'all' ? true : filterType === 'active' ? !ele.isDone : ele.isDone)
+    }
   },
 
   // 合并模块
   // 就相当于制作一个 vuex 的  state
-  // 制作的 state 展示   { todos :  todos模块下的 state 的返回值}  返回值是 {todos: 【】}
+  // 制作的 state 展示   { todos :  todos模块下的 state 的返回值}  返回值是 {todos: []}
   modules: {
-    todos: todos
+    todos: todos,
+    filterType: filterType
   }
+
+  // 虽然将 store 数据拆分成了两个模块，但是 模块内的 mutations  actions  getters 依然是全局的 ，和之前的用法一样
+  // 其实就是 state 跟之前不太一样了
+  // 除非使用了模块的命名
 })
 
 
