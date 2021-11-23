@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     postList: [],
-    page: 1
+    page: 1,
+    dialogFormVisible: false
   },
   getters: {
     showPostList(state) {
@@ -28,13 +29,22 @@ export default new Vuex.Store({
     changePostStatus(state, { id, status }) {
       state.postList.find(ele => ele.id === id).status = status
     },
-    changePage(state, page){
+    changePage(state, page) {
       state.page = page
     },
     // 多余的 mutation  因为搜索和获取 postList 是同样的方式修改
     // searchPostList(state, postList) {
     //   state.postList = postList
     // },
+    changeDialogFormVisible(state, bool) {
+      state.dialogFormVisible = bool
+    },
+    editPost(state, newPost) {
+      // 替换数组内的某一个对象数据的话，直接使用对象赋值的方式不可以
+      // 可以使用所有属性替换
+      const ind = state.postList.findIndex(ele => ele.id === newPost.id)
+      state.postList.splice(ind, 1, newPost)
+    }
   },
   actions: {
     async getPostList({ commit }) {
@@ -51,11 +61,15 @@ export default new Vuex.Store({
       await axios.patch(`/postList/${id}`, { status })
       commit('changePostStatus', { id, status })
     },
-    async searchPostList({commit}, searchStr){
+    async searchPostList({ commit }, searchStr) {
       // title_like=1&important=1&country=USA
       const postList = await axios.get(`/postList?${searchStr}`)
       commit('getPostList', postList)
       commit('changePage', 1)
+    },
+    async editPost({ commit }, newPost) {
+      await axios.patch(`/postList/${newPost.id}`, newPost)
+      commit('editPost', newPost)
     }
   }
 })

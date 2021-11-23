@@ -36,7 +36,7 @@
       </el-table-column>
       <el-table-column label="操作" width="240">
         <template v-slot="{ row }">
-          <el-button size="mini" type="primary">编辑</el-button>
+          <el-button @click="edit(row)" size="mini" type="primary">编辑</el-button>
           <el-button
             :type="row.status === 'published' ? '' : 'success'"
             size="mini"
@@ -49,20 +49,36 @@
         </template>
       </el-table-column>
     </el-table>
+    <PostModal
+      @close="changeDialogFormVisible(false)"
+      :dialogFormVisible="dialogFormVisible"
+      :formData="post"
+      @handleOk="handleOk"
+    />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import PostModal from "./PostModal.vue";
 export default {
+  components: {
+    PostModal,
+  },
   data() {
     return {
       loading: false,
+      post: {
+        title: "",
+        important: 0,
+        country: "",
+        status: "",
+      }
     };
   },
   computed: {
     ...mapGetters(["showPostList"]),
-    ...mapState(["page"]),
+    ...mapState(["page", "dialogFormVisible"]),
   },
   watch: {
     page: {
@@ -76,14 +92,15 @@ export default {
           this.loading = false;
         }, 1000);
       },
-      immediate: true
+      immediate: true,
     },
   },
   created() {
     this.getPostList();
   },
   methods: {
-    ...mapActions(["getPostList", "delPost", "changePostStatus"]),
+    ...mapActions(["getPostList", "delPost", "changePostStatus",'editPost']),
+    ...mapMutations(["changeDialogFormVisible"]),
     async del(id) {
       await this.delPost(id);
       this.$notification({
@@ -105,12 +122,23 @@ export default {
         duration: 1000,
       });
     },
+    edit(row) {
+      this.changeDialogFormVisible(true);
+      this.post = {...row}
+    },
+    async handleOk(){
+      await this.editPost(this.post)
+      this.changeDialogFormVisible(false)
+    }
   },
 };
 </script>
 
-<style>
-.table-content{
+<style lang='less'>
+.table-content {
   min-height: 1200px;
+  .el-rate__icon{
+    margin-right: 0;
+  }
 }
 </style>

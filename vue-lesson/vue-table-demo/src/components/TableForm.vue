@@ -17,13 +17,14 @@
     <el-button type="primary" icon="el-icon-search" @click="search"
       >搜索</el-button
     >
-    <el-button type="primary" icon="icon-tianjia iconfont">添加</el-button>
+    <el-button @click="add" type="primary" icon="icon-tianjia iconfont">添加</el-button>
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 export default {
+  
   data() {
     return {
       title: "",
@@ -39,6 +40,7 @@ export default {
   },
   methods: {
     ...mapActions(["searchPostList"]),
+    ...mapMutations(["changeDialogFormVisible"]),
     search() {
       // if (this.isEmpty) {
       //   // console.log("没有输入");
@@ -66,6 +68,9 @@ export default {
       // console.log(searchStr)
       this.searchPostList(searchStr);
     },
+    add(){
+      this.changeDialogFormVisible(true)
+    }
   },
 };
 </script>
