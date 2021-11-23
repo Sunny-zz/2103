@@ -44,6 +44,9 @@ export default new Vuex.Store({
       // 可以使用所有属性替换
       const ind = state.postList.findIndex(ele => ele.id === newPost.id)
       state.postList.splice(ind, 1, newPost)
+    },
+    addPost(state, newPost){
+      state.postList.push(newPost)
     }
   },
   actions: {
@@ -70,6 +73,10 @@ export default new Vuex.Store({
     async editPost({ commit }, newPost) {
       await axios.patch(`/postList/${newPost.id}`, newPost)
       commit('editPost', newPost)
+    },
+    async addPost({commit}, newPost){
+      const res = await axios.post(`/postList`, newPost)
+      commit('addPost', res)
     }
   }
 })

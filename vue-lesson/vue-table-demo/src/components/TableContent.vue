@@ -36,7 +36,9 @@
       </el-table-column>
       <el-table-column label="操作" width="240">
         <template v-slot="{ row }">
-          <el-button @click="edit(row)" size="mini" type="primary">编辑</el-button>
+          <el-button @click="edit(row)" size="mini" type="primary"
+            >编辑</el-button
+          >
           <el-button
             :type="row.status === 'published' ? '' : 'success'"
             size="mini"
@@ -50,6 +52,7 @@
       </el-table-column>
     </el-table>
     <PostModal
+      ref="myPostModal"
       @close="changeDialogFormVisible(false)"
       :dialogFormVisible="dialogFormVisible"
       :formData="post"
@@ -73,7 +76,12 @@ export default {
         important: 0,
         country: "",
         status: "",
-      }
+        author: {
+          loginname: "sunny-zz",
+          avatar_url:
+            "https://avatars.githubusercontent.com/u/32998077?v=4&s=120",
+        },
+      },
     };
   },
   computed: {
@@ -94,12 +102,36 @@ export default {
       },
       immediate: true,
     },
+    dialogFormVisible: {
+      handler(newValue) {
+        if (!newValue) {
+          this.post = {
+            title: "",
+            important: 0,
+            country: "",
+            status: "",
+            author: {
+              loginname: "sunny-zz",
+              avatar_url:
+                "https://avatars.githubusercontent.com/u/32998077?v=4&s=120",
+            }
+          };
+          this.$refs.myPostModal.$refs.myForm.resetFields()
+        }
+      },
+    },
   },
   created() {
     this.getPostList();
   },
   methods: {
-    ...mapActions(["getPostList", "delPost", "changePostStatus",'editPost']),
+    ...mapActions([
+      "getPostList",
+      "delPost",
+      "changePostStatus",
+      "editPost",
+      "addPost",
+    ]),
     ...mapMutations(["changeDialogFormVisible"]),
     async del(id) {
       await this.delPost(id);
@@ -124,12 +156,19 @@ export default {
     },
     edit(row) {
       this.changeDialogFormVisible(true);
-      this.post = {...row}
+      this.post = { ...row };
     },
-    async handleOk(){
-      await this.editPost(this.post)
-      this.changeDialogFormVisible(false)
-    }
+    async handleOk() {
+      // 点击确定按钮有两种情况
+      if (this.post.id) {
+        // 1. 编辑
+        await this.editPost(this.post);
+      } else {
+        // 2. 添加
+        await this.addPost(this.post);
+      }
+      this.changeDialogFormVisible(false);
+    },
   },
 };
 </script>
@@ -137,7 +176,7 @@ export default {
 <style lang='less'>
 .table-content {
   min-height: 1200px;
-  .el-rate__icon{
+  .el-rate__icon {
     margin-right: 0;
   }
 }
