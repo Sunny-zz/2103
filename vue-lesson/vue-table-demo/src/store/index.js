@@ -17,6 +17,9 @@ export default new Vuex.Store({
     },
     totalNum(state) {
       return state.postList.length
+    },
+    lastPostNum(state){
+      return state.postList[state.postList.length - 1].num
     }
   },
   mutations: {
@@ -74,7 +77,8 @@ export default new Vuex.Store({
       await axios.patch(`/postList/${newPost.id}`, newPost)
       commit('editPost', newPost)
     },
-    async addPost({commit}, newPost){
+    async addPost({commit, getters}, newPost){
+      newPost.num = getters.lastPostNum + 1
       const res = await axios.post(`/postList`, newPost)
       commit('addPost', res)
     }

@@ -80,12 +80,12 @@ export default {
           loginname: "sunny-zz",
           avatar_url:
             "https://avatars.githubusercontent.com/u/32998077?v=4&s=120",
-        },
+        }
       },
     };
   },
   computed: {
-    ...mapGetters(["showPostList"]),
+    ...mapGetters(["showPostList", "lastPostNum"]),
     ...mapState(["page", "dialogFormVisible"]),
   },
   watch: {
