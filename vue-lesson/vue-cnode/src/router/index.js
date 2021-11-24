@@ -8,6 +8,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/post/:id'
+  },
+  {
     path: '/',
     component: Home,
     children: [
@@ -20,7 +23,8 @@ const routes = [
         component: PostList
       }
     ]
-  }
+  },
+  
 ]
 
 const router = new VueRouter({

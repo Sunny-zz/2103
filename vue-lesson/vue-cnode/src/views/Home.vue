@@ -1,7 +1,7 @@
 <template>
   <Panel>
     <template #header>
-      <router-link class="tab" :to='tab | transformTab' v-for="tab in tabs" :key="tab">
+      <router-link active-class="active" :class="['tab', {active: tab === '全部' && $route.path === '/'}]" :to='tab | transformTab' v-for="tab in tabs" :key="tab">
         {{ tab }}
       </router-link>
     </template>
@@ -27,5 +27,13 @@ export default {
 a.tab {
   color: #80bd01;
   margin-right: 15px;
+  font-size: 14px;
+  display: inline-block;
+  padding: 2px 4px;
+}
+a.active{
+  background-color: #80bd01;
+  border-radius: 3px;
+  color: #fff;
 }
 </style>
