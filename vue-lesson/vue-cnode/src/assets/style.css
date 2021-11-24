@@ -3,6 +3,10 @@
 }
 body{
   margin: 0;
+  background-color: #e1e1e1;
+  /* min-height: 100vh;
+  display: flex; */
+  /* 当容器(df)下的项目(df 的子级)没有副轴方向上的大小的话，并且容器和项目都没有控制项目的副轴方向上的排列，那么项目的副轴方向上的大小和容器一样大 */
 }
 ul {
   list-style: none;
