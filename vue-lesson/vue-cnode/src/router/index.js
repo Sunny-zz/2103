@@ -2,14 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import PostList from '../views/PostList.vue'
+import Post from '../views/Post.vue'
 Vue.use(VueRouter)
 
 // 路由懒加载
 
 const routes = [
-  {
-    path: '/post/:id'
-  },
   {
     path: '/',
     component: Home,
@@ -24,7 +22,10 @@ const routes = [
       }
     ]
   },
-  
+  {
+    path: '/post/:id',
+    component: Post
+  }
 ]
 
 const router = new VueRouter({

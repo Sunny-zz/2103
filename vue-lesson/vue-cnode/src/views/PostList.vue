@@ -1,5 +1,5 @@
 <template>
-  <div v-if="postList.length">
+  <div v-if="postList.length"  >
     <PostItem v-bind='post' v-for="post in postList" :key="post.id"/>
   </div> 
   <el-skeleton v-else :rows="18" animated /> 
@@ -26,7 +26,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['getPosts'])
+    ...mapActions(['getPosts']),
+    
   },
 }
 </script>

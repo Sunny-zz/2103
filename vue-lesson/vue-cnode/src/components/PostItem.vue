@@ -11,25 +11,45 @@
       <span>/</span>
       <span class="visit-count">{{ visit_count }}</span>
     </div>
-    <span v-if="isHasTag" :class="['tag', {active: top || good}]">{{ tagText }}</span>
-    <h3>{{ title }}</h3>
-    <span class="last-reply-count">{{ last_reply_at | moment("from", "now") }}</span>
+    <span v-if="isHasTag" :class="['tag', { active: top || good }]">{{
+      tagText
+    }}</span>
+    <h3>
+      <router-link :to="`/post/${id}`">{{ title }}</router-link>
+    </h3>
+    <span class="last-reply-count">{{
+      last_reply_at | moment("from", "now")
+    }}</span>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
+import Vue from "vue";
 export default {
-  props: ["author", "reply_count", "visit_count", "title", "last_reply_at", 'top', 'good', 'tab'],
+  props: [
+    "author",
+    "reply_count",
+    "visit_count",
+    "title",
+    "last_reply_at",
+    "top",
+    "good",
+    "tab",
+    "id",
+  ],
   computed: {
     isHasTag() {
-      const pageTab = this.$route.params.tab || 'all'
-      const isAllOrGoodPage = pageTab === 'all' || pageTab === 'good'
-      return  this.top ? true :  isAllOrGoodPage ? true : false
+      const pageTab = this.$route.params.tab || "all";
+      const isAllOrGoodPage = pageTab === "all" || pageTab === "good";
+      return this.top ? true : isAllOrGoodPage ? true : false;
     },
-    tagText(){
-      return this.top ? '置顶' : this.good ? '精华' : Vue.filter('transformTab')(this.tab)
-    }
+    tagText() {
+      return this.top
+        ? "置顶"
+        : this.good
+        ? "精华"
+        : Vue.filter("transformTab")(this.tab);
+    },
   },
 };
 </script>
@@ -40,6 +60,9 @@ export default {
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #ccc;
+  &:hover {
+    background-color: #f5f5f5;
+  }
   h3 {
     margin: 0;
     white-space: nowrap;
@@ -49,6 +72,16 @@ export default {
     color: #333;
     flex-grow: 1;
     margin-left: 10px;
+    font-weight: normal;
+    a {
+      color: #333;
+      &:visited {
+        color: #999;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   .avatar,
   .count-wrap,
@@ -62,12 +95,12 @@ export default {
     border-radius: 3px;
     background-color: #e5e5e5;
     color: #999;
-    &.active{
+    &.active {
       color: #fff;
       background-color: #80bd01;
     }
   }
-  .count-wrap{
+  .count-wrap {
     width: 80px;
     font-size: 14px;
     margin: 0 10px;

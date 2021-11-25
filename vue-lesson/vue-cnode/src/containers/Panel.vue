@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <div class="panel-header">
+    <div v-if="$slots.header" class="panel-header">
       <slot name='header' />
     </div>
     <div class="panel-content">
@@ -11,6 +11,7 @@
 
 <style lang='less'>
 .panel{
+  margin-bottom: 15px;
   .panel-header{
     background-color: #f6f6f6;
     padding: 10px;
