@@ -1,11 +1,13 @@
 <template>
   <div class="post-item">
-    <el-avatar
-      class="avatar"
-      size="medium"
-      shape="square"
-      :src="author.avatar_url"
-    ></el-avatar>
+    <router-link :to='`/user/${author.loginname}`'>
+      <el-avatar
+        class="avatar"
+        size="medium"
+        shape="square"
+        :src="author.avatar_url"
+      ></el-avatar>
+    </router-link>
     <div class="count-wrap">
       <span class="reply-count">{{ reply_count }}</span>
       <span>/</span>

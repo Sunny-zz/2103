@@ -23,7 +23,7 @@ export default {
   display: flex;
   flex-direction: column;
   .main{
-    width: 90%;
+    width: 90%; 
     margin: 20px auto;
     max-width: 1400px;
     flex-grow: 1;

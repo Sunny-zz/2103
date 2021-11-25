@@ -1,18 +1,22 @@
 <template>
-  <div class="comment-item" :id='id'>
-    <el-avatar
-      class="avatar"
-      size="medium"
-      shape="square"
-      :src="author.avatar_url"
-    ></el-avatar>
+  <div class="comment-item" :id="id">
+    <router-link :to="`/user/${author.loginname}`">
+      <el-avatar
+        class="avatar"
+        size="medium"
+        shape="square"
+        :src="author.avatar_url"
+      ></el-avatar>
+    </router-link>
     <div class="comment-right">
       <div>
         <span>{{ author.loginname }}</span>
         <span class="position">
-         <a :href="`#${id}`"> {{ index + 1 }}楼 · {{ create_at | moment("from", "now") }}</a>
+          <a :href="`#${id}`">
+            {{ index + 1 }}楼 · {{ create_at | moment("from", "now") }}</a
+          >
         </span>
-        <span v-if="ups.length" class="like">👍{{ups.length}}</span>
+        <span v-if="ups.length" class="like">👍{{ ups.length }}</span>
       </div>
       <div v-html="content"></div>
     </div>
@@ -21,7 +25,7 @@
 
 <script>
 export default {
-  props: ["author", "index", "create_at", "content", 'ups', 'id'],
+  props: ["author", "index", "create_at", "content", "ups", "id"],
 };
 </script>
 
@@ -36,7 +40,7 @@ export default {
     img {
       width: 100%;
     }
-    >div{
+    > div {
       display: flex;
       .position {
         flex-grow: 1;

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import PostList from '../views/PostList.vue'
 import Post from '../views/Post.vue'
+import User from '../views/User.vue'
 Vue.use(VueRouter)
 
 // 路由懒加载
@@ -25,6 +26,10 @@ const routes = [
   {
     path: '/post/:id',
     component: Post
+  },
+  {
+    path: '/user/:username',
+    component: User
   }
 ]
 
