@@ -11,14 +11,31 @@
       </h1>
       <div class="header-right">
         <router-link to="/">首页</router-link>
-        <router-link to="/login">登录</router-link>
+
+        <router-link v-if="!info" to="/login">登录</router-link>
+        <div v-else>
+          <el-avatar
+            class="avatar"
+            size="medium"
+            shape="square"
+            :src="info.avatar_url"
+          ></el-avatar>
+          <span>退出</span>
+        </div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState({
+      info: (state) => state.login.info,
+    }),
+  },
+};
 </script>
 
 <style lang='less'>
@@ -42,7 +59,18 @@ header {
     .header-right {
       display: flex;
       align-items: center;
-      a{
+      >div{
+        display: flex;
+        align-items: center;
+        color: #fff;
+        margin-left: 20px;
+        font-size: 12px;
+        span{
+          margin-right: 20px;
+          cursor: pointer;
+        }
+      }
+      a {
         color: #fff;
         margin-left: 20px;
         font-size: 14px;

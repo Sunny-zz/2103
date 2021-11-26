@@ -8,7 +8,7 @@
         :src="author.avatar_url"
       ></el-avatar>
     </router-link>
-    <div class="count-wrap">
+    <div v-if="reply_count" class="count-wrap">
       <span class="reply-count">{{ reply_count }}</span>
       <span>/</span>
       <span class="visit-count">{{ visit_count }}</span>
@@ -41,8 +41,8 @@ export default {
   ],
   computed: {
     isHasTag() {
-      const pageTab = this.$route.params.tab || "all";
-      const isAllOrGoodPage = pageTab === "all" || pageTab === "good";
+      const page = this.$route.path
+      const isAllOrGoodPage = (page === '/' || page === '/all' || page === '/good')
       return this.top ? true : isAllOrGoodPage ? true : false;
     },
     tagText() {

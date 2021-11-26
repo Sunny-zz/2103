@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import postList from './modules/postList'
 import post from './modules/post'
 import user from './modules/user'
+import login from './modules/login'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   modules: {
     postList,
     post,
-    user
+    user,
+    login
   }
 })
