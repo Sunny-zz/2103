@@ -16,6 +16,7 @@ export default {
         axios.post('/accesstoken', { accesstoken: token }).then((res) => {
           commit('getInfo', res)
           localStorage.setItem('info', JSON.stringify(res))
+          localStorage.setItem('token', token)
           resolve()
         }).catch(() => {
           // console.log('出错了')

@@ -11,7 +11,6 @@
       </h1>
       <div class="header-right">
         <router-link to="/">首页</router-link>
-
         <router-link v-if="!info" to="/login">登录</router-link>
         <div v-else>
           <el-avatar
@@ -20,7 +19,7 @@
             shape="square"
             :src="info.avatar_url"
           ></el-avatar>
-          <span>退出</span>
+          <span @click="logout">退出</span>
         </div>
       </div>
     </div>
@@ -28,12 +27,23 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
       info: (state) => state.login.info,
     }),
+  },
+  methods: {
+    ...mapMutations(['getInfo']),
+    logout() {
+      if(this.$route.path !== '/'){
+        this.$router.push('/')
+      }
+      localStorage.removeItem('info')
+      localStorage.removeItem('token')
+      this.getInfo(null)
+    }
   },
 };
 </script>

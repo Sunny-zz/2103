@@ -16,7 +16,11 @@
             {{ index + 1 }}楼 · {{ create_at | moment("from", "now") }}</a
           >
         </span>
-        <span v-if="ups.length" class="like">👍{{ ups.length }}</span>
+        <span @click="upsClick" class="like">
+          <i v-if="is_uped" class="iconfont icon-dianzan1"></i>
+          <i v-else class="iconfont icon-dianzan"></i>
+          {{ ups.length ? ups.length : "" }}</span
+        >
       </div>
       <div v-html="content"></div>
     </div>
@@ -24,8 +28,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
-  props: ["author", "index", "create_at", "content", "ups", "id"],
+  props: ["author", "index", "create_at", "content", "ups", "id", "is_uped"],
+  methods: {
+    ...mapActions(['upsHandle']),
+    upsClick() {
+      this.upsHandle(this.id)
+    }
+  },
 };
 </script>
 
