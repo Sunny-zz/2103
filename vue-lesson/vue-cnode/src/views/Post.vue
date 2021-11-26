@@ -47,8 +47,8 @@
       </template>
       <template #content>
         <!-- 其实应该写一个 md 编辑器 -->
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <el-button type='primary'>回复</el-button>
+        <textarea v-model="content" name="" id="" cols="30" rows="10"></textarea>
+        <el-button type='primary' @click="add">回复</el-button>
       </template>
     </Panel>
   </div>
@@ -61,6 +61,11 @@ import PostCommentItem from "../components/PostCommentItem.vue";
 import Panel from "../containers/Panel.vue";
 
 export default {
+  data() {
+    return {
+      content: ''
+    }
+  },
   components: { Panel, PostCommentItem },
   computed: {
     ...mapState({
@@ -72,9 +77,14 @@ export default {
     this.getPost(this.$route.params.id);
   },
   methods: {
-    ...mapActions(["getPost", 'collectHandle']),
+    ...mapActions(["getPost", 'collectHandle', 'addComment']),
     collect(){
       this.collectHandle({id: this.post.id, is_collect: !this.post.is_collect})
+    },
+    add(){
+      if(this.content.trim()){
+        this.addComment({id: this.post.id,  content: this.content})
+      }
     }
   },
 };

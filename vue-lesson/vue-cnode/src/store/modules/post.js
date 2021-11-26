@@ -60,7 +60,16 @@ export default {
       const token = localStorage.getItem('token')
       const res = await axios.post(`/reply/${id}/ups`, { accesstoken: token })
       commit('changeUps', { id: id, action: res.action })
-
+    },
+    // post /topic/:topic_id/replies 新建评论
+    async addComment ( {dispatch}, {id, content}){
+      const token = localStorage.getItem('token')
+      await axios.post(`/topic/${id}/replies`, {accesstoken: token, content: content})
+      // 请求的返回值  {success: true, reply_id: '5433d5e4e737cbe96dcef312'}   基本上只有一个 新增之后的评论的 id
+      // 请求成功之后后台就更新了
+      // 其实前端只需要展示出来添加了就可以了,但是有的时候信息较少无法添加
+      // 我们可以重新发 getPost 请求，也就是将整个文章详情重新请求，那么新增的评论也就更新了
+      dispatch('getPost', id)
     }
   }
 }
