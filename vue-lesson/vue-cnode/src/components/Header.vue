@@ -21,6 +21,10 @@
           ></el-avatar>
           <span @click="logout">退出</span>
         </div>
+
+        <router-link v-if="info" to='post/create'>
+          <el-button type='success' size='small'>发布话题</el-button>
+        </router-link>
       </div>
     </div>
   </header>

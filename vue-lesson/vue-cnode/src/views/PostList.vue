@@ -30,8 +30,15 @@ export default {
     "$route.params.tab": {
       handler() {
         // console.log(value)
-        this.getPosts({ tab: this.tab });
-        this.page = 2
+        // 在刷新的时候判断当前的类别是不是我们网站应有的类别
+        console
+        if(['all','ask','share','job','dev','good'].includes(this.tab)){
+
+          this.getPosts({ tab: this.tab });
+          this.page = 2
+        }else{
+          this.$router.push({name: 'err'})
+        }
       },
       immediate: true,
     },

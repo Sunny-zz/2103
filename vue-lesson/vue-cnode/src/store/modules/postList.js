@@ -20,6 +20,7 @@ export default {
     // 2. 加载更多请求
     // 依据传参带不带 page 属性，不带那就是初始请求反之加载更多
     async getPosts({ commit }, query) {
+
       const { page, tab } = query
       const queryStr = page ? `?tab=${tab}&page=${page}&limit=20` : `?tab=${tab}`
       const list = await axios.get(`/topics${queryStr}`)

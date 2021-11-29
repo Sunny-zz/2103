@@ -394,8 +394,19 @@ vuex 的辅助函数
 ## 插件功能
 
 
+
+## 部署
+development                production
+serve dev start              build
+1. 打包编译成普通 html css js 等   看package.json 的 scripts 字段 找到 build 相关 执行对应的命名
+2. 打完之后的文件不能直接双击访问，因为有一些路径的引入需要服务器支持，可以随意启动一个服务测试（npm i serve -g）
+3. 当 vue 项目使用 路由的时候，而且路由模式是 history 的时候，在非首页刷新出现 404 。可以切换路由模式为 hash。
+
+
+
 ### 提示
 - vue 项目内没有特殊情况不能使用 原生的 dom 操作
+
 
 
 ### 起名
