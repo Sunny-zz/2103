@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // vue2.x  响应式原理   
+    // vue3.x  proxy
+    // Object.defineProperty
+    // const obj = {
+    //   username: '第嘉',
+    //   userage: 10
+    // }
+    // 当我要修改 obj 的属性时执行一些操作
+    // 需要通过 Object.defineProperty 给对象 添加/更新 属性, 对属性进行详细的描述
+    // 或者说 使用 Object.defineProperty 重写对象
+    // Object.defineProperty(a,b,c)   用法
+    // a 表示 原对象  b 表示 属性名   c 表示该属性的属性描述 值是一个对象
+
+
+    // 属性的描述 分两大类
+    // 1. 存取描述符  configurable  enumerable  get   set
+    // 2. 数据描述符  configurable  enumerable  value  writable
+    // configurable  是否可以使用其他的描述符描述该属性 以及 是否可以删除该属性  默认值是 false
+    // enumerable   该属性是否可被枚举 对象遍历时是否可以遍历到该属性  默认是false
+    // value 就是属性值  默认值是 undefined
+    // writable 属性是否可以被修改 默认是false
+    // Object.defineProperty(obj, 'username', {
+    //   configurable: false,
+    //   enumerable: false,
+    //   writable: false,
+    //   value: '第1嘉'
+    // })
+
+    // console.log(obj)
+    // obj.username = 100
+    // console.log(obj)
+
+    // for (const key in obj) {
+    //   console.log(obj[key])
+    // }
+
+
+    // Object.defineProperty(obj, 'userage', {
+    //   configurable: true,
+    //   enumerable: true,
+    //   // get 返回值用于设置属性值的
+    //   get(){
+    //     return 11
+    //   },
+    //   // set 函数用于监听 属性值的变化，属性值改变就会触发
+    //   set(value){
+    //     // value 表示改变之后的值
+    //     console.log('age改变了', value)
+    //     // 更新 age 相关的视图
+    //   }
+    // })
+
+    // console.log(obj.userage)
+    // obj.userage = 13
+    // obj.userage = 14
+    // obj.userage = 15
+    // obj.userage = 16
+    // obj.userage = 17
+
+    const dataObj = {
+      num: 10,
+      post: {
+        author: {
+          loginname: '小花'
+        },
+        title: 'vue 响应式原理',
+        comments: [
+          {
+            id: 1,
+            text: '666'
+          },
+          {
+            id: 2,
+            text: '哈哈哈'
+          }
+        ]
+      },
+      tabs: ['good', 'share']
+    }
+
+    function render() {
+      console.log('要更新视图')
+    }
+
+    // 使用存取描述符对象  dataObj 的所有属性
+    // let num = dataObj.post.title
+    // Object.defineProperty(dataObj.post, 'comments', {
+    //   configurable: true,
+    //   enumerable: true,
+    //   get() {
+    //     return num
+    //   },
+    //   set(value) {
+    //     num = value
+    //     render()
+    //   }
+    // })
+
+    // dataObj.post.title = 'react'
+
+    // defineReactive  定义属性的响应处理
+    function defineReactive(obj, prototypeName, value) {
+      Object.defineProperty(obj, prototypeName, {
+        configurable: true,
+        enumerable: true,
+        get() {
+          return value
+        },
+        set(val) {
+          // 相同的值不去做视图更新
+          if (val !== value) {
+            value = val
+            render()
+          }
+        }
+      })
+      // 属性的值如果是数组或者对象的话都需要重新 observe
+      if (isObject(value) || Array.isArray(value)) {
+        observe(value)
+      }
+    }
+    function isObject(obj) {
+      return typeof obj === 'object' && obj !== null && !Array.isArray(obj)
+    }
+    // 找到 dataObj 下的所有对象属性， 然后对其进行属性描述
+    function observe(obj) {
+      if (Array.isArray(obj)) {
+        obj.__proto__ = proto
+      } else if (isObject(obj)) {
+        // console.log('是对象')
+        Object.keys(obj).forEach(key => {
+          defineReactive(obj, key, obj[key])
+        })
+      }
+    }
+
+    // 数组的变化 引起视图的更新
+
+    // const arr = [1, 2, 3, 4, 5]
+    // const arr1 = [1, 2, 3, 4, 5]
+    // 哪些方法可以直接修改数组   push  reverse  shift  unshift   sort  splice  pop 
+    // 当使用数组的上述方法修改数组的时候，引起视图的更新
+
+    // 重写数组的 push  reverse  shift  unshift   sort  splice  pop 方法
+
+    // 如何重写数组的方法 使用 Array.prototype
+
+    const oldArrPrototype = Array.prototype
+    const methods = ['push', 'reverse', 'shift', 'unshift', 'sort', 'splice', 'pop']
+    // 拷贝一个原型对象  Array.prototype 下的属性不可枚举不能遍历
+    // 我们重写这些方法并不是将所有数组的下的这些方法重写了, 只有我的数据是数组的话里面的数组方法才能被修改
+
+    // 所以我们做法是创建一个新的原型对象 里面包含数组内的所有方法，以及修改之后的方法, 给特定的数组使用
+    const proto = Object.create(oldArrPrototype)
+
+    methods.forEach(ele => {
+      Object.defineProperty(proto, ele, {
+        configurable: false,
+        enumerable: false,
+        value: function () {
+          // 1. 执行原来的方法
+          // 2. 更新视图
+          // console.log(111)
+          oldArrPrototype[ele].apply(this, [...arguments])
+          render()
+        },
+        writable: false
+      })
+    })
+    // 修改 arr 的原型对象
+    // arr.__proto__ = proto
+
+    // arr.push(6)
+
+    // console.log(arr)
+
+    observe(dataObj)
+
+    // dataObj.num = 1000
+    // dataObj.post.author.loginname = '小花'
+    // dataObj.tabs = 100000
+    // dataObj.tabs.push('ask')
+    // dataObj.post.comments.push({
+    //   id: 3,
+    //   text: '123123'
+    // })
+    
+    // vue 里面一些数组或者对象的操作不会导致视图的变化
+    // 原因是因为 vue 的响应式原理处理不了这些变化
+    // vue 提供了 $set 用于对象的新增属性   $delete 用于对象的删除属性
+    // 对于数组来说 可以直接重新赋值
+
+    dataObj.post.visit_count = 1000
+    delete dataObj.num
+    dataObj.tabs[0] = 'xxxx'
+    console.log(dataObj)
+  </script>
+</body>
+
+</html>

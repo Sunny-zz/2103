@@ -11,14 +11,17 @@
     <!-- 事件总线EventBus  -->
     <!-- <Parent /> -->
     <Parent />
+
+    <DialogDemo title='测试'/>
   </div>
 </template>
 
 <script>
-import Parent from './components/vModelDemo/Parent.vue'
+import DialogDemo from './components/dialogDemo/Dialog.vue'
+import Parent from './components/vModelDemo/Parent1.vue'
 // import Parent from './components/syncDemo/Parent.vue'
 export default {
-  components: { Parent },
+  components: { Parent, DialogDemo },
 }
 </script>
 

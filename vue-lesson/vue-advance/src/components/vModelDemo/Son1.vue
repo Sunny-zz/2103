@@ -8,6 +8,11 @@
 <script>
 export default {
   props: ['value'],
+  data() {
+    return {
+      count: 100
+    }
+  },
 }
 </script>
 
