@@ -26,7 +26,7 @@ export default {
   },
   created () {
     
-    console.log(this.arr);
+    // console.log(this.arr);
   },
 }
 </script>
