@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>vue 组件间通信的方式</h2>
+    <!-- <h2>vue 组件间通信的方式</h2> -->
     <!-- <div class="box"></div> -->
     <!-- prop  $emit  slot   vuex  $listeners  $attrs  组件上的ref   $parent  $children   provide/inject  .sync v-model  事件总线EventBus -->
     <!-- prop  $attrs-->
@@ -11,11 +11,11 @@
     <!-- provide/inject -->
     <!-- 事件总线EventBus  -->
     <!-- <Parent /> -->
-    <Parent />
+    <!-- <Parent /> -->
 
-    <button @click="visible = true">弹窗出现</button>
+    <!-- <button @click="visible = true">弹窗出现</button> -->
     <!-- .sync 功能只有子组件接收使用了，父组件才能使用 .sync 修饰符 -->
-    <DialogDemo :lock-scroll='false' :beforeClose="beforeClose" :close-on-click-modal='false' :show-close="true" :modal='true' :visible="visible" @close='close' title="测试">
+    <!-- <DialogDemo :lock-scroll='false' :beforeClose="beforeClose" :close-on-click-modal='false' :show-close="true" :modal='true' :visible="visible" @close='close' title="测试">
       <p>yjeqgwjehg</p>
       <p>yjeqgwjehg</p>
       <p>yjeqgwjehg</p>
@@ -24,19 +24,26 @@
         <button>取消</button>
         <button>确定</button>
       </template>
-    </DialogDemo>
+    </DialogDemo> -->
 
-    <el-button type='primary'>按钮</el-button>
+    <!-- <el-button type='primary'>按钮</el-button> -->
+    <!-- <hr> -->
+    <!-- <AuthMenu /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import DialogDemo from "./components/dialogDemo/Dialog.vue";
-import Parent from "./components/vModelDemo/Parent1.vue";
-// import Parent from './components/syncDemo/Parent.vue'
-import axios from 'axios'
+// import AuthMenu from './components/authMenu/AuthMenu.vue';
+// import DialogDemo from "./components/dialogDemo/Dialog.vue";
+// import Parent from "./components/vModelDemo/Parent1.vue";
+
 export default {
-  components: { Parent, DialogDemo },
+  components: { 
+    // Parent, 
+    // DialogDemo, 
+    // AuthMenu 
+    },
   data() {
     return {
       visible: false
@@ -51,10 +58,7 @@ export default {
       if(res) done()
     }
   },
-  async created () {
-    const res = await axios.get('http://localhost:3008/authmenu')
-    console.log(res.data)
-  },
+  
 };
 </script>
 
