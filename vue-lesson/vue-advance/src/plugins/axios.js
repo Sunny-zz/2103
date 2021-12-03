@@ -6,3 +6,5 @@ axios.defaults.baseURL = '/api'
 axios.interceptors.response.use((res ) => res.data)
 
 Vue.prototype.$axios = axios
+
+export default axios

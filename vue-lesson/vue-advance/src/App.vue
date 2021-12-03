@@ -57,7 +57,8 @@ export default {
       const res = window.confirm('是否真的要关闭')
       if(res) done()
     }
-  },
+  }
+  
   
 };
 </script>

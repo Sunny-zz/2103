@@ -53,10 +53,10 @@ const menus = [
 // 路由功能   请求接口
 //方法 post  地址localhost:3008/authmenu   参数token: string     返回值menus 数组
 app.post('/authmenu', function (req, res) {
-  console.log(req.body)
+  // console.log(req.body)
   const {token} = req.body
   if(token === 'normal'){
-    res.send(menus.slice(0,4))
+    res.send(menus.slice(0,2))
   }else if (token === 'vip'){
     res.send(menus)
   }
