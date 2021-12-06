@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     ...mapActions(["getUser"]),
-  },
+  }
 };
 </script>
 
