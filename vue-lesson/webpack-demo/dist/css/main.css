@@ -1,0 +1,2 @@
+.box{background-color:#ccc;background:-webkit-gradient(linear,left top,left bottom,from(red),to(green));background:linear-gradient(red,green);display:-webkit-box;display:-ms-flexbox;display:flex;height:200px;width:200px}.box span{color:aqua}.fade-enter,.fade-leave-to{opacity:0}.fade-enter-active,.fade-leave-active{-webkit-transition:opacity .5s;transition:opacity .5s}
+/*# sourceMappingURL=main.css.map*/

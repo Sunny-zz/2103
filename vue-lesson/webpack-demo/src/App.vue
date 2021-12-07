@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import pic from './assets/1.svg'
+import pic from './assets/hello.svg'
 export default {
   data() {
     return {
@@ -36,7 +36,7 @@ export default {
 };
 </script>
 
-<style lang='less' scoped>
+<style lang='less' >
 // lang = less  vue 会解析成  import  xxx.less  
 .box {
   width: 200px;

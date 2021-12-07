@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwebpack_demo=self.webpackChunkwebpack_demo||[]).push([[345],{7345:function(e,t,u){u.r(t),u.d(t,{default:function(){return l}});var n=function(){var e=this,t=e.$createElement;return(e._self._c||t)("h2",[e._v("About")])};n._withStripped=!0;var r=(0,u(1900).Z)({},n,[],!1,null,null,null);r.options.__file="src/views/About.vue";var l=r.exports}}]);
+//# sourceMappingURL=345.boundle.js.map
