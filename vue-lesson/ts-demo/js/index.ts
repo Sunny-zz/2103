@@ -30,7 +30,7 @@ x = [1, 2, 3]
 
 // void 类型   代表无  
 // 只能赋值 null 或 undefined
-const a: void = null
+const a: void = undefined
 
 // null 和 undefined  类型
 
@@ -85,7 +85,7 @@ let fun3 = (a: string, b = 'hello', c?: string): void => {
 fun3('world', 'x')
 
 // 函数的剩余参数
-let fun4 = (a: string,...rest: [number, string]) => {
+let fun4 = (a: string, ...rest: [number, string]) => {
   return 1
 }
 
@@ -95,24 +95,31 @@ let fun4 = (a: string,...rest: [number, string]) => {
 // }
 // fun5()
 
+// 函数重载
+const addFun = (a: any, b: any) => a + b
+const res = addFun(1, 2)
+const res1 = addFun('hello', 'world')
+
+
 // 接口
 // 接口名称 首字母大写
 interface Label {
   label: string
   size?: number
-  readonly a?:number
+  readonly a?: number
   // 对象内的方法
   say: (text: string) => void
 }
 
-const labelObj: Label = { label: 'hello', size: 100, a: 100, say: (text) => {}}
+const labelObj: Label = { label: 'hello', size: 100, a: 100, say: (text) => { } }
+
 
 interface TodoItem {
   isDone: boolean,
   id: string,
   text: string
 }
-const todo: TodoItem= {id: '1123',text: '12312', isDone: false}
+const todo: TodoItem = { id: '1123', text: '12312', isDone: false }
 const todos: TodoItem[] = [
   {
     id: '13123',
@@ -125,4 +132,4 @@ const todos: TodoItem[] = [
 interface Fun {
   (source: string, subString: string): boolean;
 }
-let y: Fun = (a: string,b: string) => true
+let y: Fun = (a: string, b: string) => true
