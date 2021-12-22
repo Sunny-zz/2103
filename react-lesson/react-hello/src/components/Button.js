@@ -6,7 +6,7 @@ export default class Button extends Component {
 
   // 非生命周期函数(render 等)内想要使用 this 的话需要创建成箭头函数
   handleClick = () => {
-    console.log('我是按钮的点击事件')
+    // console.log('我是按钮的点击事件')
     // console.log(this.props)
     this.props.clickFun()
     // handleClick 作为事件函数可以获取事件对象

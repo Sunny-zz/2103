@@ -2,6 +2,7 @@
 
 import { Component } from 'react'
 import './user.css'
+import LifeCycleDemo from './LifeCycleDemo'
 export default class User extends Component {
   // class 的特殊属性 state 就相当于组件的状态  state 的值必须是一个对象
   state = {
@@ -93,9 +94,12 @@ export default class User extends Component {
         {/* 列表渲染 其实就是将数组数据变成  html 数组数据， 然后直接渲染到页面 */}
         <ul>
           {
-            arr.map(ele => <li key={ele}>{ele}</li>) 
+            arr.map(ele => <li key={ele}>{ele}</li>)
           }
         </ul>
+
+        <button onClick={this.changeShow}>出现或者消失 LifeCycleDemo</button>
+        {show && <LifeCycleDemo />}
       </div>
     )
   }

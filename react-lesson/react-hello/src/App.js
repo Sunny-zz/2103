@@ -21,6 +21,8 @@ import './App.css'
 import HelloWorld from './components/HelloWorld';
 import Button from './components/Button';
 import User from './components/User';
+import FormDemo from './components/FormDemo';
+import Article from './components/Demo1/Article';
 
 
 
@@ -56,6 +58,10 @@ function App() {
           <Button text='注册' clickFun={signup} />
           <hr />
           <User />
+          <hr />
+          <FormDemo />
+          <hr />
+          <Article />
         </main>
       </div>
     </>

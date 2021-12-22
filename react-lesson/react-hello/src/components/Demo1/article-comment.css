@@ -1,0 +1,12 @@
+.article-comment {
+  width: 600px;
+  min-height: 400px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.article-comment textarea {
+  resize: none;
+  width: 400px;
+  min-height: 100px;
+}
