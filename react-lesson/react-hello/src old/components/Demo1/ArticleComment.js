@@ -20,6 +20,10 @@ export default class ArticleComment extends Component {
     // console.log('提交评论' + commentText)
     // 执行父组件传递的方法更新评论
     this.props.addComment({id: new Date().getTime(), content: commentText, author: {avatar_url: 'https://avatars.githubusercontent.com/u/30174970?v=4&s=120'}})
+
+    this.setState({
+      commentText: ''
+    })
   }
   render = () => {
     const { replies } = this.props

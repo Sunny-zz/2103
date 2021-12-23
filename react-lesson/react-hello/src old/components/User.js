@@ -47,7 +47,7 @@ export default class User extends Component {
 
   changeAge = () => {
     this.setState({
-      user: { ... this.state.user, userage: 20 }
+      user: { ...this.state.user, userage: 20 }
     })
     // setState 的更新是异步的
     // setTimeout(() => {

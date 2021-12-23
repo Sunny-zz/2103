@@ -6,10 +6,10 @@ export default class LifeCycleDemo extends Component {
     count: 100
   }
 
-  constructor() {
-    super()
-    // console.log('我是生命周期 constructor')
-  }
+  // constructor() {
+  //   super()
+  //   // console.log('我是生命周期 constructor')
+  // }
   // static 声明的方法是 类的私有方法，只能在类内使用， 类的实例无法调用
   static getDerivedStateFromProps() {
     // console.log('我是生命周期 getDerivedStateFromProps')

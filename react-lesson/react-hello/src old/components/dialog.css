@@ -1,0 +1,18 @@
+.dialog-wrap {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.dialog-wrap .dialog {
+  width: 400px;
+  min-height: 200px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -200px;
+  background-color: #fff;
+}

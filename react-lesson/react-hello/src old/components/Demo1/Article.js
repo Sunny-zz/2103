@@ -6,7 +6,7 @@ import './acticle.css'
 import axios from '../../plugins/axios'
 export default class Article extends Component {
   state = {
-    article: null
+    article: null,
   }
 
   async componentDidMount() {
@@ -26,11 +26,12 @@ export default class Article extends Component {
 
   render = () => {
     const { article } = this.state
+    const commentNum = article ? article.replies.length : 0
     return (
       <div className='article'>
         {
           article ? <>
-            <ArticleBody title={article.title} content={article.content}/>
+            <ArticleBody commentNum={commentNum} title={article.title} content={article.content}/>
             <ArticleComment addComment={this.addComment} replies={article.replies}/>
           </> : <div>请稍等。。。</div>
         }
