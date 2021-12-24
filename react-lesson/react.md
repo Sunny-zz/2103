@@ -51,7 +51,37 @@ react 的 jsx 语法内 可以直接渲染数组。列表渲染的话只需要�
 非受控
 
 ### ref
+获取真实 dom 节点，主要使用 react 自带的 createRef 方法来获取
+
+ref 也可以在组件身上使用，用来获取组件本身
+```jsx
+x = createRef()
+<Dialog ref={x}></Dialog>
+```
 
 ### 特殊的 prop children 
+当父组件传递的内容写在了子组件双标签之间的话，那么子组件或使用 children prop 来接收
+```jsx
 
+```
 ### 状态提升
+组件之间的交互
+
+### propTypes 类型检查
+主要借助 prop-types 这个包来实现类型检查。
+```jsx
+
+class x extends Component{
+
+}
+
+x.propTypes = {
+  a: PropTypes.string
+}
+
+x.defaultProps = {
+  a: 'hello'
+}
+
+```
+
