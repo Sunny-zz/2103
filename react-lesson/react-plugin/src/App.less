@@ -1,0 +1,31 @@
+// 变量  导入 嵌套 混合 映射 运算
+@import './index.less';
+
+#colors() {
+  primary: blue;
+  secondary: green;
+}
+
+// 公共边框
+.bordered{
+  border: 1px solid #000;
+}
+.App {
+  h2{
+    color: @themeColor;
+    .bordered();
+    &:hover{
+      color: red;
+    }
+    > span{
+      font-size: 14px;
+      color: #colors[primary];
+    }
+  }
+  .box{
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+    .bordered();
+  }
+}

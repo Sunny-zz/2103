@@ -31,7 +31,9 @@ props 是只读的
 ### state
 状态变页面变， 页面的变化需要 state 控制
 state 的修改要使用 setState 修改， 不要直接修改 state 
-setState 是异步操作
+setState何时同步何时异步？
+由React控制的事件处理程序，以及生命周期函数调用setState不会同步更新state 。
+React控制之外的事件中调用setState是同步更新的。比如原生js绑定的事件，setTimeout/setInterval/async await等。
 
 ### 条件渲染
 - 样式类   修改 style (行内style需要写成对象类型例如  style={{width: '100px', height: '200px', ...}} ) 或者 class
@@ -93,3 +95,16 @@ x.defaultProps = {
 
 - less   react 官方脚手架并没有内置 less 所以需要我们使用 webpack 的配置给脚手架新增 less 功能
   - 使用官方提供的 eject 命令暴露配置文件，在配置文件中修改配置 `npm run eject`
+  - 安装 less  `npm i less less-loader`
+  - 找到 webpack.config.js 配置文件
+
+- styled-components 并不需要修改 配置直接使用即可  `npm i styled-components`
+
+#### 原生 dom 插件 
+swiper 3 4 5 6   jquery   echarts 等...  
+
+#### react 组件类插件
+swiper 7
+
+#### 工具类插件
+axios  lodash 
