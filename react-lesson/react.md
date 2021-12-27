@@ -85,3 +85,11 @@ x.defaultProps = {
 
 ```
 
+
+### 插件(第三方库的使用)
+
+#### 样式类(less  sass  stylus  styled-components)
+- sass   react 官方脚手架内置了 sass 功能，只需要下载包就能使用。执行 `npm i sass-loader node-sass`
+
+- less   react 官方脚手架并没有内置 less 所以需要我们使用 webpack 的配置给脚手架新增 less 功能
+  - 使用官方提供的 eject 命令暴露配置文件，在配置文件中修改配置 `npm run eject`
