@@ -66,6 +66,7 @@ export default class EchartsDemo extends Component {
 
   )
 
+
   // 相当于计算属性 
   get goodsName() {
     const { goods } = this.state

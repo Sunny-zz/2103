@@ -17,7 +17,6 @@ export default class SwiperDemo extends Component {
         // 模块的使用需要使用 modules 添加上， 然后还需要传递对应的 props，最后在引入对应的 css
         modules={[Pagination, Navigation]}
         className='swiper-demo'
-        onSlideChange={() => console.log('slide change')}
         pagination={{ clickable: true }}
         loop
         navigation

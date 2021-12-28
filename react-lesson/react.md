@@ -108,3 +108,11 @@ swiper 7
 
 #### 工具类插件
 axios  lodash 
+
+
+### Hook
+一种在函数组件内替代类组件内的 state 生命周期等的技术。
+
+#### Hook 的基本使用
+- 导入 useState 从 react 包中  `import { useState } from 'react'`
+- 使用 useState 创建 state 并赋值初始值 以及修改的方法。`const [num, setNum] = useState(100)`
