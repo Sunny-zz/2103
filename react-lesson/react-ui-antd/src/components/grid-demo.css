@@ -1,0 +1,10 @@
+.grid-demo{
+  width: 100%;
+  padding: 8px;
+}
+
+.grid-demo .row .col{
+  background-color: #00b3d4;
+  text-align: center;
+  padding: 10px 0;
+}

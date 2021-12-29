@@ -113,6 +113,44 @@ axios  lodash
 ### Hook
 一种在函数组件内替代类组件内的 state 生命周期等的技术。
 
-#### Hook 的基本使用
+#### useState 的基本使用
+在函数组件内创建 state 以及修改的方法
 - 导入 useState 从 react 包中  `import { useState } from 'react'`
 - 使用 useState 创建 state 并赋值初始值 以及修改的方法。`const [num, setNum] = useState(100)`
+
+#### useEffect 
+相当于类组件内的生命周期(componentDidMount 、 componentDidUpdate 、componentWillUnmount )
+useEffect 需要传递两个参数
+- 第一个参数是函数，相当于 componentDidMount 、 componentDidUpdate。这个函数也可以设置返回值，返回值也是一个函数，返回值函数在数据更新的时候会优先于函数函数触发，返回值函数在组件卸载的时候也会触发。
+  ***注意在第一个参数函数内如果使用了异步函数(setTimeout setInterval Promise 等会导致闭包，也就是内部使用的 state 可能一直是初始值，并不会发生改变)***
+- 第二个参数是数组，该参数的作用是优化 effect 函数的执行。当数组是空数组的时候, effect 函数只会初始触一次。当数组不为空，那么数组内的数据变化的时候 effect 函数才会触发。
+
+#### useRef
+- 获取真实 dom 节点
+- 可以在函数组件中创建一个全局变量(创建好的 ref 对象在组件的整个生命周期内保持不变)，可以利用 useRef 来解决 effect 函数中的闭包问题
+
+#### useContext 
+就是简化了 Consumer 组件获取 context 。
+用法:
+const value = useContext(context)
+
+#### useMemo
+可以优化在函数组件内的函数的触发。比如计算属性的计算在需要的时候计算..
+用法: 
+```js
+  // z 函数是一个计算过程
+  function z(){ 
+    // 一顿操作
+    return x
+  }
+
+  const res = useMemo(z, [计算使用的数据])
+  // z 是计算函数  数组内的是依赖的数据项，res 获取的是 z 函数的返回值
+  // 只有当依赖的数据发生改变的时候才会计算
+```
+
+#### 自定义 Hook
+就是将 hook 的逻辑封装到一个函数中，这个函数就被称为自定义 hook 函数。
+当多个组件需要用到同一种 hook 逻辑时,需要将 hook 逻辑分离成自定义 hook 然后在其他组件导入使用。
+
+
