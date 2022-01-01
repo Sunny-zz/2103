@@ -1,11 +1,13 @@
 
-import './App.css';
-import { Button, Divider, message } from 'antd'
+import './App.less';
+import { Button, Divider, message, DatePicker } from 'antd'
 import { SearchOutlined } from '@ant-design/icons';
 import GridDemo from './components/GridDemo';
 import MenuDemo from './components/MenuDemo';
 import TreeDemo from './components/TreeDemo';
 import TableDemo from './components/TabelDemo';
+import TableDemo1 from './components/TableDemo1';
+import ReactWindowDemo from './components/ReactWindowDemo';
 function App() {
 
   const tip = () => {
@@ -35,6 +37,11 @@ function App() {
       <TreeDemo />
       <Divider>分割线</Divider>
       <TableDemo />
+      <TableDemo1 />
+      <Divider>分割线</Divider>
+      <ReactWindowDemo />
+      <Divider>分割线</Divider>
+      <DatePicker />
     </div>
   );
 }

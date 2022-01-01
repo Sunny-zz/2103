@@ -1,5 +1,6 @@
 import { Table, Tag, Space } from 'antd';
-
+import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons'
+import './table-demo.css'
 // 所有的列
 const columns = [
   // 第一列
@@ -80,7 +81,16 @@ const data = [
   },
 ];
 
-export default function TableDemo (){
+export default function TableDemo() {
   // columns 是表格中的所有列 是一个数组 数组中的一项就是一列
-  return <Table columns={columns} dataSource={data} pagination={false}/>
+  return <Table
+    columns={columns}
+    dataSource={data}
+    expandable={{
+      expandedRowRender: ({ name, age, address }) => <p style={{ margin: 0 }}>{`名字是${name},年龄是${age},住址是${address}`}</p>,
+      // rowExpandable: ({ age }) => age <= 40,
+      // 当自定义了展开的图标之后， rowExpandable 属性就不需要设置了
+      expandIcon: ({ expanded, onExpand, record }) => record.age <= 40 ? expanded ? <CaretUpOutlined onClick={e => onExpand(record, e)} /> : <CaretDownOutlined onClick={e => onExpand(record, e)} /> : null
+    }}
+    pagination={false} />
 }

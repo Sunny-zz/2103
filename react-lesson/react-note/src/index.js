@@ -2,14 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { ConfigProvider } from 'antd'
-import zhCn from 'antd/lib/locale/zh_CN'
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <ConfigProvider locale={zhCn}>
-    <App />
-  </ConfigProvider>,
+  <App />,
   document.getElementById('root')
 );
 

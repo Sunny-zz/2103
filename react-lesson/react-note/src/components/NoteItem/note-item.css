@@ -1,0 +1,17 @@
+.note-item{
+  cursor: pointer;
+}
+.note-item .note{
+  position: relative;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding:18px 15px;
+  overflow: hidden;
+}
+.note-item .time{
+  position: absolute;
+  bottom: 20px;
+  left: 15px;
+  font-size: 12px;
+}
