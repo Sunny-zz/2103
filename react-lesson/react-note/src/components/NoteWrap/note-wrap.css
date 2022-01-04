@@ -1,6 +1,10 @@
 .note-wrap{
   padding: 10px 0;
 }
+.note-wrap header{
+  display: flex;
+  justify-content: space-between;
+}
 .note-wrap header, .note-wrap main {
   padding: 0 40px;
 }

@@ -6,6 +6,9 @@
     <Box2 />
     <Box3 />
     <Box4 />
+    <hr>
+    <button @click="obj.b.d.e = 200">按钮</button>
+    {{obj}}
   </div>
 </template>
 
@@ -22,6 +25,22 @@ export default {
     Box2,
     Box3,
     Box4
+  },
+  data() {
+    return {
+      obj: {
+        a:10,
+        b:{
+          c: 20,
+          d:{
+            e:30
+          }
+        }
+      }
+    }
+  },
+  updated() {
+    console.log('更新了')
   },
 };
 </script>
