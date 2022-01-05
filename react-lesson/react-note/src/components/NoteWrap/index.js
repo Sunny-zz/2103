@@ -1,7 +1,7 @@
 // NoteWrap 组件
 import './note-wrap.css'
 import { Typography, Row, Input, Divider } from 'antd'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getNotes } from '../../api'
 import NoteItem from '../NoteItem'
 import { PlusCircleOutlined } from '@ant-design/icons'
@@ -15,7 +15,8 @@ export default function NoteWrap() {
   const [editNote, setEditNote] = useState(null)
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
-  // const [searchText, setSearchText] = useState('')
+
+  const searchInput = useRef(null)
   // 进入页面获取 note 列表
   useEffect(() => {
     async function get() {
@@ -35,52 +36,53 @@ export default function NoteWrap() {
     openModal()
     setEditNote(note)
   }
-  const onSearch = (value) => {
-    // setSearchText(value.trim())
-    console.log(value)
+  const onSearch = async (value) => {
+    setHasMore(true)
+    setPage(1)
+    const newNotes = await getNotes(1, value.trim())
+    if (newNotes.length < 9) {
+      setHasMore(false)
+    }
+    setNotes(newNotes)
   }
-  // 根据 notes 以及 searchText 计算出来需要展示  note 数组
-  // const showNotes = useMemo(() => notes.filter(note => note.title.includes(searchText)), [notes, searchText])
-
-  const notesList = notes.length ? notes.map(note => <NoteItem onClick={() => noteClick(note)} {...note} key={note.id} />) : '暂无便签内容'
+  const notesList = notes.map(note => <NoteItem onClick={() => noteClick(note)} {...note} key={note.id} />)
 
   const getMoreNotes = async () => {
-    // console.log(11111)
     setPage(page + 1)
-    const newNotes = await getNotes(page + 1)
-    console.log(newNotes)
+    const searchText = searchInput.current.state.value?.trim()
+    const newNotes = await getNotes(page + 1, searchText)
     setNotes([...notes, ...newNotes])
     if (newNotes.length < 9) {
       setHasMore(false)
     }
   }
-
   return (
     <div className='note-wrap'>
       <header>
         <Title level={3}>便签</Title>
-        <Search style={{ width: '50%' }} placeholder="请输入标题关键字查询" onSearch={onSearch} enterButton />
+        <Search ref={searchInput} style={{ width: '50%' }} placeholder="请输入标题关键字查询" onSearch={onSearch} enterButton />
       </header>
       <Divider></Divider>
       <main>
-        <InfiniteScroll
-          style={{ overflow: 'hidden', overflowY: 'auto' }}
-          dataLength={notes.length}
-          next={getMoreNotes}
-          hasMore={hasMore}
-          loader={<h4 style={{ textAlign: 'center', padding: '20px 0 ' }}>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>到底了</b>
-            </p>
-          }
-        >
-          <Row gutter={[16, 16]}>
-            {notesList}
-          </Row>
-        </InfiniteScroll>
-
-
+        {
+          notes.length ? <InfiniteScroll
+            scrollThreshold='30px'
+            style={{ overflow: 'hidden', overflowY: 'auto' }}
+            dataLength={notes.length}
+            next={getMoreNotes}
+            hasMore={hasMore}
+            loader={<h4 style={{ textAlign: 'center', padding: '20px 0 ' }}>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>到底了</b>
+              </p>
+            }
+          >
+            <Row gutter={[16, 16]}>
+              {notesList}
+            </Row>
+          </InfiniteScroll> : '暂无内容'
+        }
       </main>
 
       <PlusCircleOutlined onClick={openModal} className='add-note' />
