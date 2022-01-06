@@ -1,0 +1,26 @@
+.topics {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.topics .topics-nav{
+  background-color: #f6f6f6;
+  padding: 8px;
+  padding-left: 20px;
+}
+.topics .topics-nav a{
+  margin-right: 20px;
+  color: #80bd01;
+  font-size: 14px;
+  padding: 3px 4px;
+  border-radius: 3px;
+}
+
+.topics .topics-nav a.active{
+  background-color: #80bd01;
+  color: #fff;
+  padding: 3px 4px;
+  border-radius: 3px;
+}
