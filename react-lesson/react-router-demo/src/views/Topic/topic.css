@@ -1,0 +1,19 @@
+.topic {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  min-height: 700px;
+  padding: 30px 10px;
+}
+.topic .topic-header{
+  border-bottom: 1px solid #ccc;
+}
+.topic .topic-main  {
+  margin-top: 10px;
+}
+.topic .topic-main img{
+  width: 100%;
+}

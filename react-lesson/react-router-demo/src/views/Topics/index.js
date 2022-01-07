@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useParams } from "react-router-dom";
 import { getTopics } from "../../api";
+import TopicItem from "../../components/TopicItem";
 import './topics.css'
 export default function Topics() {
   const { pathname } = useLocation()
@@ -12,7 +13,7 @@ export default function Topics() {
       setTopics(res.data)
     })()
   }, [tab])
-  const contet = topics.length ? topics.map(topic => <div key={topic.id}>{topic.title}</div>) : '暂无文章'
+  const contet = topics.length ? topics.map(topic => <TopicItem key={topic.id} {...topic} />) : '暂无文章'
   return (
     <div className="topics">
       <div className="topics-nav">

@@ -19,6 +19,7 @@ export default function Login() {
       })
       // console.log(res)
       sessionStorage.setItem('info', JSON.stringify(userInfo))
+      sessionStorage.setItem('token', values.password)
       navigate('/')
     } catch (error) {
       // 登录失败密码不匹配

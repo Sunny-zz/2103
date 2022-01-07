@@ -1,0 +1,36 @@
+.topic-item{
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+  background-color: #fff;
+}
+.topic-item > img{
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.topic-item .count{
+  margin-right: 4px;
+  margin-left: 4px;
+  font-size: 12px;
+  text-align: center;
+  width: 70px;
+  color: #b4b4b4;
+  flex-shrink: 0;
+}
+.topic-item .count .reply_count{
+  color: #9e78c0;
+  font-size: 14px;
+}
+.topic-item a {
+  color: #333;
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 20px;
+}
+.topic-item time{
+  flex-shrink: 0;
+}

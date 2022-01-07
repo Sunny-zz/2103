@@ -24,3 +24,13 @@ export function getTopics(tab = 'all', page = 1) {
     }
   })
 }
+// 文章详情请求
+export function getTopic(id, token){
+  return request({
+    url: `/topic/${id}`,
+    method: 'get',
+    params: {
+      accesstoken: token
+    }
+  })
+}

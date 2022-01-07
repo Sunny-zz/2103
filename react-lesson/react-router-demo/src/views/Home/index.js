@@ -8,6 +8,7 @@ export default function Home() {
   const navigate = useNavigate()
   const logout = () => {
     sessionStorage.removeItem('info')
+    sessionStorage.removeItem('token')
     message.success({
       content: '退出成功',
       duration: 1
