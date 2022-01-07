@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ConfigProvider } from 'antd';
 // import reportWebVitals from './reportWebVitals';
+import zhCn from 'antd/lib/locale/zh_CN'
 
 ReactDOM.render(
   <Router>
-    <App />
+    <ConfigProvider locale={zhCn}>
+      <App />
+    </ConfigProvider>
   </Router>,
   document.getElementById('root')
 );

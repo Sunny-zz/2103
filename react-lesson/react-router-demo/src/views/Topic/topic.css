@@ -4,9 +4,9 @@
   margin-top: 30px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: #fff;
   min-height: 700px;
   padding: 30px 10px;
+  background-color: #fff;
 }
 .topic .topic-header{
   border-bottom: 1px solid #ccc;
@@ -16,4 +16,14 @@
 }
 .topic .topic-main img{
   width: 100%;
+}
+.topic .topic-footer{
+  margin-top: 20px;
+}
+.topic .topic-footer .comment-list .comment-list-head{
+  background-color: #ccc;
+  line-height: 30px;
+  font-size: 14px;
+  border-radius: 4px 4px 0 0 ;
+  padding-left: 10px;
 }

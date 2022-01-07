@@ -32,6 +32,7 @@ export default function Home() {
       <main>
         <Outlet />
       </main>
+      <footer></footer>
     </div>
   )
 }
