@@ -1,0 +1,36 @@
+{
+  "users" :[
+    {
+      "id": "6t6t8",
+      "username": "小王",
+      "address": {
+        "city": "秦皇岛",
+        "street": "河北大街"
+      }
+    },
+    {
+      "id": "yhu78u",
+      "username": "小王1",
+      "address": {
+        "city": "秦皇岛1",
+        "street": "河北大街1"
+      }
+    },
+    {
+      "id": "yhy561",
+      "username": "小王2",
+      "address": {
+        "city": "秦皇岛2",
+        "street": "河北大街2"
+      }
+    },
+    {
+      "id": "9i0o81",
+      "username": "小王3",
+      "address": {
+        "city": "秦皇岛3",
+        "street": "河北大街3"
+      }
+    }
+  ]
+}

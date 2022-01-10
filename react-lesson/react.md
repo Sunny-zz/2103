@@ -154,3 +154,17 @@ const value = useContext(context)
 当多个组件需要用到同一种 hook 逻辑时,需要将 hook 逻辑分离成自定义 hook 然后在其他组件导入使用。
 
 
+
+### redux
+独立的状态管理工具。在 react 中使用的话，还需要借助 react-redux (或者 Redux Toolkit) 使用。
+- 安装  npm i redux react-redux 
+- 创建 createStore(reducer)
+  - createStore 方法
+  - reducer 函数 (初始化 store 以及 添加修改数据的行为 )
+- 使用 需要使用 react-redux 
+  - 先用 Provider 提供 store 给 App 组件
+  - 在组件中使用 connect 或者 useSelector 动态获取 store 数据
+  - 修改的话，需要使用 store.dispatch 发对应的 action 或者使用使用 useDispatch 获取 dispatch 来发 action
+
+#### 不可变性
+Redux 期望所有状态更新都是使用不可变的方式
