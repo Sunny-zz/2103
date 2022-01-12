@@ -4,7 +4,7 @@ import users from "./users";
 import counter from './counter';
 // 合并之后的结果就可以使用 createStore 创建成 store 了
 export default combineReducers({
-  users,
+  users: users,
   counter
 })
 

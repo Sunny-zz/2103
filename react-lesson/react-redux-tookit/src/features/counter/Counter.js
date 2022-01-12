@@ -11,8 +11,10 @@ import {
 import styles from './Counter.module.css';
 
 export function Counter() {
+  // 获取 counter 的值 并没有直接使用 state => state.counter.xxx.xx
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
+  
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
