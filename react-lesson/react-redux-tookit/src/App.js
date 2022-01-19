@@ -1,9 +1,12 @@
-import './App.css';
-import TodoMVC from './components/TodoMVC';
+
+import './app.css'
+import { useRoutes } from 'react-router-dom'
+import routes from './routes';
 function App() {
+  const router = useRoutes(routes)
   return (
     <div className="App">
-      <TodoMVC />
+      {router}
     </div>
   );
 }
