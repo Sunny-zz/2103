@@ -1,0 +1,20 @@
+/* pages/about/about.wxss */
+/* 模板的 wxss 也需要导入 */
+@import '../templates/templates.wxss';
+.message {
+  font-size: 20px;
+  color: aqua;
+  font-weight: bold;
+  text-align: center;
+}
+.demo{
+  width: 375rpx;
+  height: 375rpx;
+  margin: 0 auto;
+}
+.demo1{
+  background-color: #ccc;
+}
+.demo2{
+  background-color: #00b3d4;
+}

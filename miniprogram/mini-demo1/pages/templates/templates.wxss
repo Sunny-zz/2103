@@ -1,0 +1,4 @@
+/* pages/templates/templates.wxss */
+.template-demo1{
+  color: red;
+}

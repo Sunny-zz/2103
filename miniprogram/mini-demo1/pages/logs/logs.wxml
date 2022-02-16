@@ -1,0 +1,23 @@
+<!--logs.wxml-->
+<view class="container log-list">
+  <!-- <block wx:for="{{logs}}" wx:key="timeStamp" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log.date}}</text>
+  </block> -->
+  <swiper 	indicator-color="rgba(255, 255, 255, .4)" circular indicator-active-color="#fff" class="my-swiper" indicator-dots interval="{{2000}}" duration="{{500}}">
+    <swiper-item>
+      <view class="swiper-item one">
+        <image mode="widthFix" src="../../images/1.jpg"></image>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper-item two">
+        <image mode="widthFix" src="../../images/2.jpg"></image>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper-item three">
+        <image mode="widthFix" src="../../images/3.jpg"></image>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

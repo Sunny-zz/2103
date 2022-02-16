@@ -1,0 +1,32 @@
+<!-- pages/about/about.wxml -->
+<!-- 使用模板必须导入 -->
+<import src="../templates/templates.wxml" />
+<view class="about">
+  <text>about 页面</text>
+  <view class="{{count > 100 ? className : ''}} box1">
+    <text>{{count}}</text>
+  </view>
+  <view class="message">
+    <text>{{message + ' 你好，小程序'}}</text>
+  </view>
+  <view wx:if="{{show}}" class="demo demo1"></view>
+  <!-- <view wx:elif="{{}}" class="demo demo1"></view> -->
+  <view wx:else class="demo demo2"></view>
+  <view>
+    <block wx:if="{{show}}" >
+      <view>1</view>
+      <view>2</view>
+    </block>
+  </view>
+  <view>
+    <!-- 默认循环的项是 item 索引是 index -->
+    <!-- wx:key 提供的是一个属性名并不是属性值，所以不需要加 {{}} -->
+    <!-- 在给 wx:key 提供值的时候 当数组内的项是唯一的数字或者字符串的时候 可以使用 *this 关键字代替 -->
+    <view wx:for-index="num" wx:for-item="ele" wx:for="{{array}}" wx:key="*this">
+      <text>{{ele}}</text>
+    </view>
+  </view>
+  <!-- 使用模板 -->
+  <!-- data 传递数据的时候，例如数据需要 index msg 以及 time，那么传递的时候需要写成 {{index: 1, msg: 'hello template', time: '16:40'}}  或者 {{...item}} item 是包含上述属性的对象 -->
+  <template is="msgItem" data="{{index: 1, msg: 'hello template', time: '16:40'}}"/>
+</view>

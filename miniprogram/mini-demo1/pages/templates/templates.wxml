@@ -1,0 +1,13 @@
+<!--pages/templates/templates.wxml-->
+<!-- 模板名称 msgItem -->
+<template name="msgItem">
+  <!-- 模板内容 -->
+  <!-- 展示的内容里面的数据需要使用模板的时候传递 -->
+  <view class="template-demo1">
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+
+
+
