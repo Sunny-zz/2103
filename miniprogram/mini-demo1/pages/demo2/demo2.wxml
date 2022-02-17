@@ -1,0 +1,14 @@
+<!-- pages/demo2/demo2.wxml -->
+<view class='numbers'>
+  <view class="number" wx:for="{{numbers}}" wx:key="index">
+    <text>{{item}}</text>
+  </view>
+</view>
+<view class="list">
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <text>{{item}}</text>
+  </view>
+  <view wx:if="{{loading}}" class="loading">
+    <text>请稍等。。。</text>
+  </view>
+</view>

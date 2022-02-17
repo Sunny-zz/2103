@@ -1,38 +1,19 @@
-// pages/about/about.js
+// pages/demo/demo.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    count: 100,
-    message: 'hello 小程序',
-    className: 'box',
-    show: false,
-    array: [1,2,3,4,5,6,7]
+
   },
 
-  // 在对象内创建的任意方法都可以被当作事件函数来使用
-  // 在函数内获取 data 数据使用 
-  sub(){
-    // console.log(e)
-    // 修改 count
-    this.setData({
-      count: this.data.count - 1
-    })
-  },
-  add(){
-    // console.log('我是一个 add 函数')
-    this.setData({
-      count: this.data.count + 1
-    })
-  },
-  // 事件传参，需要借助事件对象下的 dataset 属性来间接的实现事件传参
-  change(e){
-    // console.log(e)
-    this.setData({
-      count: e.currentTarget.dataset.count
-    })
+  login(){
+    // console.log(app.globalData)
+    app.globalData.login = true
+    // 登录成功跳转到首页
+    wx.navigateTo({url:  "../index/index"})
   },
 
   /**
@@ -60,7 +41,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('页面隐藏了')
   },
 
   /**
@@ -88,6 +69,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log('点击了分享')
   }
 })

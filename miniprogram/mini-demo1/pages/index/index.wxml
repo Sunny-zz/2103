@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<import ></import>
 <view class="container">
   <view class="userinfo">
     <block wx:if="{{canIUseOpenData}}">
@@ -20,4 +21,14 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
+  <!-- 模板默认是不展示的 -->
+  <!-- 创建 -->
+  <template name="myTemplate">
+    <view>
+      我是一个模版
+    </view>
+  </template>
+  <!-- 使用 -->
+  <template is="myTemplate"></template>
+  <button bind:tap="handleTap">测试 globalData</button>
 </view>

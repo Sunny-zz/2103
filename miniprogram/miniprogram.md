@@ -43,3 +43,14 @@
 小程序内的样式单位一般不写 px %, 写成 rpx
 小程序横向全屏是 750rpx， 相当于 100%
 样式默认可以使用 @import 导入
+
+### 条件渲染
+wx:if  wx:elif  wx:else
+样式的条件渲染可以使用 class 或者 style 实现
+
+### 列表渲染
+wx:for   wx:for-item  wx:for-index 
+必须添加 wx:key 该值是代表 key 的属性名，某些特殊情况 key 的值可以使用关键字 *this
+
+### 模板
+相当于一个公共的 view，所有页面可以使用

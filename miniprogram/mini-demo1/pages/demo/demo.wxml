@@ -1,0 +1,8 @@
+<!--pages/demo/demo.wxml-->
+<text>pages/demo/demo.wxml</text>
+<card img-src='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fnimg.ws.126.net%2F%3Furl%3Dhttp%3A%2F%2Fdingyue.ws.126.net%2F2021%2F1022%2F96cbba4aj00r1cz7d000ic000dw009ug.jpg%26thumbnail%3D650x2147483647%26quality%3D80%26type%3Djpg&refer=http%3A%2F%2Fnimg.ws.126.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647656615&t=8bdcd77f5d21fffec1eef3cf3fa9c100' img-info='小猫'>
+  <text slot='before'>我是插槽1</text>
+  <text slot='after'>我是插槽2</text>
+</card>
+
+<button bind:tap="login">登录</button>

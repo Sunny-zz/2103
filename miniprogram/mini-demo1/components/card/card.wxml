@@ -1,0 +1,9 @@
+<!--components/card/card.wxml-->
+<view class="card">
+  <image class="card-img" src="{{imgSrc}}" />
+  <slot name="before"></slot>
+  <text>{{imgInfo}}</text>
+  <slot name="after"></slot>
+</view>
+
+

@@ -1,30 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <script>
-    const obj = {
-      f1:function(){
-        console.log(this)
-      },
-      f2:() => {
-        console.log(this)
-      },
+    // const obj = {
+    //   f1: function () {
+    //     console.log(this)
+    //   },
+    //   f2: () => {
+    //     console.log(this)
+    //   },
+    // }
+
+    // obj.f1()
+    // obj.f2()
+
+    // const fn1 = obj.f1
+    // const fn2 = obj.f2
+
+    // fn1()
+    // fn2()
+
+    // 将异步封装到了函数内， callback 异步执行完毕之后触发
+    // var sayhello = function (name, callback) {
+    //   setTimeout(function () {
+    //     console.log(name);
+    //     callback();
+    //   }, 1000);
+    // }
+
+    // var sayhello = function (name) {
+    //   return new Promise(function (resolve, reject) {
+    //     setTimeout(function () {
+    //       console.log(name);
+    //       resolve(100);
+    //     }, 1000);
+    //   });
+    // }
+
+    // sayhello('first').then(()=> {
+    //   // 当 then 方法内的回到函数 返回的是一个 新的 promise ，那么第二个 then 方法的回调函数就会等待这个新的 promise 的状态发生变化时才会执行
+    //   return sayhello('second')
+    // }).then(() => {
+    //   sayhello('third')
+    // })
+
+    // sayhello('first').then(()=> sayhello('second')).then(() => sayhello('third'))
+
+    // sayhello("first",function(){
+    //   sayhello('second', function(){
+    //     sayhello('third', function(){
+    //       console.log('end')
+    //     })
+    //   })
+    // });
+    
+    console.log(1000)
+    for (let i = 0; i < 5; i++) {
+      console.log(i)
     }
 
-    obj.f1()
-    obj.f2()
-
-    const fn1 = obj.f1
-    const fn2 = obj.f2
-
-    fn1()
-    fn2()
   </script>
 </body>
+
 </html>

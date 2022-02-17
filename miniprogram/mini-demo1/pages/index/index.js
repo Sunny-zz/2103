@@ -17,6 +17,9 @@ Page({
       url: '../logs/logs'
     })
   },
+  handleTap(){
+    console.log(app.globalData)
+  },
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({

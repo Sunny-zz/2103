@@ -1,0 +1,23 @@
+/* pages/demo2/demo2.wxss */
+.numbers .number {
+  line-height: 24px;
+  font-size: 18px;
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+}
+.list{
+  margin-top: 60px;
+}
+.list .item {
+  height: 60px;
+  background-color: #ccc;
+  border-bottom: 1px solid #000;
+  text-align: center;
+  line-height: 60px;
+}
+.loading {
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background-color: rgb(232, 250, 154);
+}

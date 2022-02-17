@@ -1,12 +1,16 @@
 /* pages/about/about.wxss */
 /* 模板的 wxss 也需要导入 */
 @import '../templates/templates.wxss';
+.box1{
+  text-align: center;
+}
 .message {
   font-size: 20px;
   color: aqua;
   font-weight: bold;
   text-align: center;
 }
+
 .demo{
   width: 375rpx;
   height: 375rpx;
