@@ -16,6 +16,13 @@ Page({
     wx.navigateTo({url:  "../index/index"})
   },
 
+  handleTap(){
+    wx.setStorage({
+      key:"num",
+      data: 100000
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

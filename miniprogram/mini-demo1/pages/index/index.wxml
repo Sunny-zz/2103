@@ -31,4 +31,5 @@
   <!-- 使用 -->
   <template is="myTemplate"></template>
   <button bind:tap="handleTap">测试 globalData</button>
+  
 </view>

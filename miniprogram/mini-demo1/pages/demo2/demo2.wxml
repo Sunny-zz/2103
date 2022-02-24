@@ -4,6 +4,7 @@
     <text>{{item}}</text>
   </view>
 </view>
+<button bind:tap="get">获取storage</button>
 <view class="list">
   <view class="item" wx:for="{{list}}" wx:key="index">
     <text>{{item}}</text>

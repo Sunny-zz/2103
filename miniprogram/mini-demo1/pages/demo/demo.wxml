@@ -6,3 +6,4 @@
 </card>
 
 <button bind:tap="login">登录</button>
+<button bind:tap="handleTap">测试微信小程序的 storage</button>

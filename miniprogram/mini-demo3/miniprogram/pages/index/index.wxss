@@ -1,0 +1,30 @@
+/**index.wxss**/
+
+page {
+  padding-top: 54rpx;
+  background-color: #f6f6f6;
+  padding-bottom: 60rpx;
+}
+.todo-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.todo-form input {
+  padding: 5px;
+  flex-grow: 1;
+  border: 1px solid #ccc;
+}
+
+.todo{
+  padding: 10px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+}
+
+.todo .completed{
+  color: #ccc;
+}

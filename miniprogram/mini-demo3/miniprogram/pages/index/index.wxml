@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="todo-form">
+    <input bindinput="input" value="{{text}}" />
+    <button size="mini" bind:tap="add">添加</button>
+  </view>
+  <view wx:if="{{todos.length}}">
+    <view class="todo" wx:for="{{todos}}" wx:key="_id">
+      <checkbox data-item="{{item}}"  bindtap="change" checked="{{item.isCompleted}}"/>
+      <input class="{{item.isCompleted ? 'completed' : ''}}" data-item="{{item}}" bindblur="update" value="{{item.text}}"  />
+      <button data-id="{{item._id}}"  bind:tap="del">删除</button>
+    </view>
+  </view>
+  <view class="login">
+    <button size="mini" bind:tap="login">登录</button>
+    
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机</button>
+  </view>
+</view>

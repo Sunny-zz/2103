@@ -20,4 +20,10 @@
       </view>
     </swiper-item>
   </swiper>
+  <view wx:if="{{list.length}}">
+    <view wx:for="{{list}}" wx:key="id">
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+  <view wx:else>请稍等</view>
 </view>

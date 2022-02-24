@@ -10,6 +10,15 @@ Page({
     loading: false
   },
 
+  get(){
+    wx.getStorage({
+      key: 'num',
+      success (res) {
+        console.log(res.data)
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

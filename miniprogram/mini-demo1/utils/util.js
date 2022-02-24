@@ -18,4 +18,20 @@ const formatNumber = n => {
 //   formatTime
 // }
 
-export {formatTime}
+// 请求封装
+
+const wxR = options => {
+  const { url, method = 'GET', data } = options
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url,
+      method,
+      data: data,
+      success(res) {
+        resolve(res.data)
+      }
+    })
+  })
+}
+
+export { formatTime, wxR }

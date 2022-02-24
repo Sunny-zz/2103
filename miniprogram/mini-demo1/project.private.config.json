@@ -27,7 +27,8 @@
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
     "ignoreUploadUnusedFiles": true,
-    "useStaticServer": true
+    "useStaticServer": true,
+    "minifyWXML": true
   },
   "condition": {
     "miniprogram": {
@@ -57,8 +58,8 @@
           "name": "",
           "pathName": "pages/demo2/demo2",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
